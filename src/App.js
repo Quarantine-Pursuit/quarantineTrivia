@@ -1,7 +1,7 @@
 import './App.css';
 import {useState} from 'react';
-// import axios from 'axios';
-
+import axios from 'axios';
+import DisplayTrivia from './DisplayTrivia'
 
 function App() {
   const [userInput, setUserInput] = useState({
@@ -9,8 +9,13 @@ function App() {
     questionNum: "placeholder"
   });
 
+  const [userQuestion, setUserQuestion] = useState([])
+
   const handleSubmit = (e) => {
     e.preventDefault(e);
+    console.log(userInput)
+    
+     getTrivia() 
   };
 
   const handleChange = (e) => {
@@ -21,18 +26,39 @@ function App() {
     })
   }
 
+  const getTrivia = () => {
+    axios({
+      url: `https://opentdb.com/api.php`,
+      method: 'GET',
+      dataResponse: 'json',
+      params: {
+        amount: userInput.questionNum,
+        category: userInput.categories,
+  
+      }
+    }).then((response) => {
+      setUserQuestion(response.data.results)
+
+      
+    })
+  
+  }
+
+  console.log(userQuestion)
+
+
   return (
     <div className="App">
       <form action="submit" onSubmit={handleSubmit}>
         <select name="categories" id="categories" value={userInput.categories} onChange={handleChange}>
           <option value="placeholder" disabled>Please select your categories</option>
-          <option name="General Knowledge" value="General Knowledge">General Knowledge</option>
-          <option name="Sports" value="Sports">Sports</option>
-          <option name="Geography" value="Geography">Geography</option>
-          <option name="Celebrities" value="Celebrities">Celebrities</option>
-          <option name="Vehicles" value="Vehicles">Vehicles</option>
-          <option name="Entertainment: Film" value="Entertainment: Film">Film</option>
-          <option name="Entertainment: Japanese Anime & Manga" value="Entertainment: Japanese Anime & Manga">Anime and Manga</option>
+          <option name="General Knowledge" value="9">General Knowledge</option>
+          <option name="Sports" value="21">Sports</option>
+          <option name="Geography" value="22">Geography</option>
+          <option name="Celebrities" value="26">Celebrities</option>
+          <option name="Vehicles" value="28">Vehicles</option>
+          <option name="Entertainment: Film" value="11">Film</option>
+          <option name="Entertainment: Japanese Anime & Manga" value="31">Anime and Manga</option>
         </select>
 
         <select name="questionNum" id="questionNum" value={userInput.questionNum} onChange={handleChange}>
@@ -47,11 +73,15 @@ function App() {
 
         <button type="submit">Start Trivia</button>
       </form>
+      <DisplayTrivia
+        triviaObj={userQuestion}
+      />
     </div>
   );
 }
 
 export default App;
+
 
 
 // Categories: General Knowledge, Sports, Entertainment: Japanese Anime & Manga, Geography, 
