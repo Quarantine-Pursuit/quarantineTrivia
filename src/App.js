@@ -11,7 +11,7 @@ function App() {
   });
 
   const [userQuestion, setUserQuestion] = useState([]);
-  console.log(userQuestion)
+
   const getTrivia = () => {axios({
       url: `https://opentdb.com/api.php`,
       method: `GET`,
@@ -65,7 +65,9 @@ function App() {
 
         <button type="submit">Start Trivia</button>
       </form>
-      <DisplayTrivia triviaObj={userQuestion}/>
+      <DisplayTrivia
+        triviaObj={userQuestion}
+      />
     </div>
   );
 }
