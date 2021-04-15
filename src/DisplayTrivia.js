@@ -14,11 +14,11 @@ const DisplayTrivia = (props) => {
                             key.incorrect_answers.length === 1 ? (
                                 <form action="submit">
                             
-                                    <label htmlFor="true">true</label>
-                                    <input type="radio" name="true" id="true"/>
+                                    <label htmlFor="true">True</label>
+                                    <input type="radio" name="trueFalse" id="true" value="true"/>
                         
-                                    <label htmlFor="false">false</label>
-                                    <input type="radio" name="false" id="false"/>
+                                    <label htmlFor="false">False</label>
+                                    <input type="radio" name="trueFalse" id="false" value="false"/>
 
                                     <button type="submit">Submit Answer</button>
                                </form>
@@ -26,16 +26,16 @@ const DisplayTrivia = (props) => {
                                 <form action="submit">
 
                                     <label htmlFor="questionOne">{key.correct_answer}</label>
-                                    <input type="radio" name="questionOne" id="questionOne"/>
+                                    <input type="radio" name="multipleChoice" id="questionOne" value="correct"/>
 
                                     <label htmlFor="questionTwo">{key.incorrect_answers[0]}</label>
-                                    <input type="radio" name="questionTwo" id="questionTwo"/>
+                                    <input type="radio" name="multipleChoice" id="questionTwo" value="wrong"/>
 
                                     <label htmlFor="questionThree">{key.incorrect_answers[1]}</label>
-                                    <input type="radio" name="questionThree" id="questionThree"/>
+                                    <input type="radio" name="multipleChoice" id="questionThree" value="wrong"/>
 
                                     <label htmlFor="questionFour">{key.incorrect_answers[2]}</label>
-                                    <input type="radio" name="questionFour" id="questionFour"/>
+                                    <input type="radio" name="multipleChoice" id="questionFour" value="wrong"/>
 
                                     <button type="submit">Submit Answer</button>
 
