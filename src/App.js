@@ -5,12 +5,14 @@ import DisplayTrivia from './DisplayTrivia.js';
 
 
 function App() {
+  const [answerCheck, setAnswerCheck] = useState();
   const [userInput, setUserInput] = useState({
     categories: "placeholder",
     questionNum: "placeholder"
   });
 
   const [userQuestion, setUserQuestion] = useState([]);
+  console.log(answerCheck);
 
   const getTrivia = () => {axios({
       url: `https://opentdb.com/api.php`,
@@ -29,7 +31,6 @@ function App() {
     e.preventDefault(e);
     getTrivia();
   };
-
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -65,9 +66,29 @@ function App() {
 
         <button type="submit">Start Trivia</button>
       </form>
-      <DisplayTrivia
-        triviaObj={userQuestion}
-      />
+      {
+        userQuestion.map((key, i) => {
+          return(
+            <DisplayTrivia
+              category={key.category}
+              correctAnswer={key.correct_answer}
+              incorrectAnswer={key.incorrect_answers}
+              question={key.question}
+              key={`key${i}`}
+              answerChecker={setAnswerCheck}
+            />
+          )
+        })
+      }
+      {
+        answerCheck === true ? (
+          <div>
+            <h2>You are correct!</h2>
+          </div>
+        ) : answerCheck === false ? (
+          <h2>You are wrong!</h2>
+        ) : null
+      }
     </div>
   );
 }
