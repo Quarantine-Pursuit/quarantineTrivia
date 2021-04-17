@@ -13,3 +13,8 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 /* #AFEDFF - skyblue */
 /* #FFB0C6 - pink */
 /* #9BD694 - light green */
+
+.listOfGames {
+    border: 1px solid #AFEDFF;
+    list-style: none;
+}

@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import DisplayTrivia from './DisplayTrivia.js';
 import SaveButton from './SaveButton.js';
 
