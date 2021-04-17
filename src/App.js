@@ -1,7 +1,8 @@
 import './App.css';
-import {useState} from 'react';
 import axios from 'axios';
+import { useState } from 'react';
 import DisplayTrivia from './DisplayTrivia.js';
+import SaveButton from './SaveButton.js';
 
 
 function App() {
@@ -12,7 +13,6 @@ function App() {
   });
 
   const [userQuestion, setUserQuestion] = useState([]);
-  console.log(answerCheck);
 
   const getTrivia = () => {axios({
       url: `https://opentdb.com/api.php`,
@@ -89,6 +89,8 @@ function App() {
           <h2>You are wrong!</h2>
         ) : null
       }
+
+      <SaveButton currentTrivia={userQuestion}/>
     </div>
   );
 }
