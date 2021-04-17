@@ -14,7 +14,8 @@ function App() {
 
   const [userQuestion, setUserQuestion] = useState([]);
 
-  const getTrivia = () => {axios({
+  const getTrivia = () => {
+    axios({
       url: `https://opentdb.com/api.php`,
       method: `GET`,
       dataResponse: `json`,
@@ -68,5 +69,5 @@ export default App;
 // Create a button that initially displays Saved Games
 // on click, use ternaries to toggle saved games and change the button display to Current Game
 // Inside saved game, create an onclick function on the chevron so that the user can load their saved games from database
-
+// option to delete some of the saved games.
 

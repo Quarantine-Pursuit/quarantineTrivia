@@ -15,6 +15,11 @@ const SaveButton = (props) => {
         props.setQuestion([]);
     }
 
+    const closeClick = () => {
+        setSaveGame(false);
+        props.setQuestion([]);
+    }
+
     return(
         <>
             <button onClick={handleClick}>Save your game</button>
