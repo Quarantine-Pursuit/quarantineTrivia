@@ -27,7 +27,9 @@ const SelectTrivia = (props) => {
                 <button className="pageChange">
                     <Link to="/savedGames">Saved Games</Link>
                 </button>
-                <form action="submit" onSubmit={handleSubmit} className="triviaSetting">
+                {
+                    props.userQuestion.length === 0 ? (
+                        <form action="submit" onSubmit={handleSubmit} className="triviaSetting">
                     <div className="triviaOptions">
                         <select name="categories" id="categories" value={props.userInput.categories} onChange={handleChange}>
                             <option value="placeholder" disabled>Trivia Category</option>
@@ -49,9 +51,19 @@ const SelectTrivia = (props) => {
                             <option name="9"value="9">9</option>
                             <option name="10"value="10">10</option>
                         </select>
+
+                        <select name="difficulty" id="difficulty" value={props.userInput.difficulty} onChange={handleChange}>
+                            <option value="placeholder" disabled>Difficulty</option>
+                            <option name="easy" value="easy">Easy</option>
+                            <option name="medium" value="medium">Medium</option>
+                            <option name="hard" value="hard">Hard</option>
+                        </select>
                     </div>
                     <button type="submit" className="startGame">Start</button>
                 </form>
+                    ) : null
+                }
+
 
                 {
                     props.userQuestion.length === 0 ? null :
@@ -60,7 +72,6 @@ const SelectTrivia = (props) => {
                         <NewGameButton setQuestion={props.setUserQuestion} setUserInput={props.setUserInput}/>
                     </div>
                 }
-
                 {
                     props.userQuestion.map((key, i) => {
                         return(
@@ -69,13 +80,13 @@ const SelectTrivia = (props) => {
                                 correctAnswer={key.correct_answer}
                                 incorrectAnswer={key.incorrect_answers}
                                 question={key.question}
-                                randomKey={`key${i}`}
                                 answerChecker={setAnswerCheck}
+                                questionNum = {i}
+                                key={`key${i}`}
                             />
                         )
                     })
                 }
-
                 {
                     answerCheck === true ? (
                         <div>
