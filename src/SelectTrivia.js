@@ -62,7 +62,7 @@ const SelectTrivia = (props) => {
                                 correctAnswer={key.correct_answer}
                                 incorrectAnswer={key.incorrect_answers}
                                 question={key.question}
-                                key={`key${i}`}
+                                randomKey={`key${i}`}
                                 answerChecker={setAnswerCheck}
                             />
                         )

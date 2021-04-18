@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 
 const DisplayTrivia = (props) => {
-
     const [userChoice, setUserChoice] = useState('');
+    console.log(props)
 
     const userSubmit = (e) => {
         e.preventDefault();
@@ -16,9 +16,11 @@ const DisplayTrivia = (props) => {
         }
     }
 
+
     const handleChange = (e) => {
         setUserChoice(e.target.value);
     }
+
 
     return(
         <section>
@@ -30,13 +32,13 @@ const DisplayTrivia = (props) => {
                             <form action="submit" onSubmit={userSubmit}>
                                 <div className="answerChoices">
                                     <div className="answer">
-                                        <input type="radio" name="trueFalse" id="true" value="true" onChange={handleChange}/>
-                                        <label htmlFor="true">True</label>
+                                        <input type="radio" name="trueFalse" id={`${props.randomKey}true`} value="true" onChange={handleChange}/>
+                                        <label htmlFor={`${props.randomKey}true`}>True</label>
                                     </div>
                         
                                     <div className="answer">
-                                        <input type="radio" name="trueFalse" id="false" value="false" onChange={handleChange}/>
-                                        <label htmlFor="false">False</label>
+                                        <input type="radio" name="trueFalse" id={`${props.randomKey}false`} value="false" onChange={handleChange}/>
+                                        <label htmlFor={`${props.randomKey}false`}>False</label>
                                     </div>
                                 </div>
 
@@ -46,23 +48,23 @@ const DisplayTrivia = (props) => {
                             <form action="submit" onSubmit={userSubmit}>
                                 <div className="answerChoices">
                                     <div className="answer">
-                                        <input type="radio" name="multipleChoice" id="questionOne" value="correct" onChange={handleChange}/>
-                                        <label htmlFor="questionOne">{props.correctAnswer}</label>
+                                        <input type="radio" name="multipleChoice" id={`${props.randomKey}questionOne`} value="correct" onChange={handleChange}/>
+                                        <label htmlFor={`${props.randomKey}questionOne`}>{props.correctAnswer}</label>
                                     </div>
                                     
                                     <div className="answer">
-                                        <input type="radio" name="multipleChoice" id="questionTwo" value="wrong" onChange={handleChange}/>
-                                        <label htmlFor="questionTwo">{props.incorrectAnswer[0]}</label>
+                                        <input type="radio" name="multipleChoice" id={`${props.randomKey}questionTwo`} value="wrong" onChange={handleChange}/>
+                                        <label htmlFor={`${props.randomKey}questionTwo`}>{props.incorrectAnswer[0]}</label>
                                     </div>
 
                                     <div className="answer">
-                                        <input type="radio" name="multipleChoice" id="questionThree" value="wrong" onChange={handleChange}/>
-                                        <label htmlFor="questionThree">{props.incorrectAnswer[1]}</label>
+                                        <input type="radio" name="multipleChoice" id={`${props.randomKey}questionThree`} value="wrong" onChange={handleChange}/>
+                                        <label htmlFor={`${props.randomKey}questionThree`}>{props.incorrectAnswer[1]}</label>
                                     </div>
 
                                     <div className="answer">
-                                        <input type="radio" name="multipleChoice" id="questionFour" value="wrong" onChange={handleChange}/>
-                                        <label htmlFor="questionFour">{props.incorrectAnswer[2]}</label>
+                                        <input type="radio" name="multipleChoice" id={`${props.randomKey}questionFour`} value="wrong" onChange={handleChange}/>
+                                        <label htmlFor={`${props.randomKey}questionFour`}>{props.incorrectAnswer[2]}</label>
                                     </div>
                                 </div>
 
