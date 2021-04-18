@@ -12,7 +12,6 @@ const SaveButton = (props) => {
 
     const closeClick = () => {
         setSaveGame(false);
-        props.setQuestion([]);
     }
 
     return(

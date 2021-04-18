@@ -34,6 +34,10 @@ const SavedGames = (props) => {
         })
     }
 
+    const closeClick = () => {
+        setConfirmMessage(false);
+    }
+
     return(
         <div>
             <button className="pageChange">
@@ -53,7 +57,6 @@ const SavedGames = (props) => {
                             >
                                 <h3>Trivia: {saved.category}</h3>
                                 <p>{saved.numOfQuestions} questions</p>
-                                <p>{saved.key}</p> 
                             </li>
                                 
                         
@@ -68,7 +71,7 @@ const SavedGames = (props) => {
                         <Link to="/">
                             <button onClick={loadGame}>Yes</button>
                         </Link>
-                        <button>No</button>
+                        <button onClick={closeClick}>No</button>
                     </div>
                 ) : null
             }

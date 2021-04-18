@@ -13,7 +13,9 @@ const NewGameButton = (props) => {
         props.setQuestion([]);
         props.setUserInput({
             categories: "placeholder",
-            questionNum: "placeholder"
+            questionNum: "placeholder",
+            difficulty: "placeholder",
+            type: "placeholder"
         });
     }
 

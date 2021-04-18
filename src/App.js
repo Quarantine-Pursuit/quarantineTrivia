@@ -10,7 +10,9 @@ import Footer from './Footer.js'
 function App() {
   const [userInput, setUserInput] = useState({
     categories: "placeholder",
-    questionNum: "placeholder"
+    questionNum: "placeholder",
+    difficulty: "placeholder",
+    type: "placeholder"
   });
 
   const [userQuestion, setUserQuestion] = useState([]);
@@ -22,10 +24,13 @@ function App() {
       dataResponse: `json`,
       params: {
         amount: userInput.questionNum,
-        category: userInput.categories
+        category: userInput.categories,
+        difficulty: userInput.difficulty,
+        type: userInput.type
       }
     }).then( (response) => {
       setUserQuestion(response.data.results)
+      console.log(response.data.results)
     })
   };
 
