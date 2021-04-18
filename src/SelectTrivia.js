@@ -79,7 +79,6 @@ const SelectTrivia = (props) => {
                         <NewGameButton setQuestion={props.setUserQuestion} setUserInput={props.setUserInput}/>
                     </div>
                 }
-
                 {
                     props.userQuestion.map((key, i) => {
                         return(
@@ -95,7 +94,6 @@ const SelectTrivia = (props) => {
                         )
                     })
                 }
-
                 {
                     answerCheck === true ? (
                         <div>
