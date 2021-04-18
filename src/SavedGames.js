@@ -2,10 +2,12 @@ import firebase from './firebase.js';
 import {Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
-const SavedGames = () => {
+
+const SavedGames = (props) => {
 
     const [displaySaved, setDisplaySaved] = useState([]);
     const [confirmMessage, setConfirmMessage] = useState(false);
+    const [selectedGame, setSelectedGame] = useState('');
 
     useEffect(() => {
         const dbRef = firebase.database().ref();
@@ -24,6 +26,14 @@ const SavedGames = () => {
         });
     }, []);
 
+    const loadGame = () => {
+        const dbRef = firebase.database().ref(selectedGame);
+        dbRef.on('value', (response) => {
+            const data = response.val();
+            props.setUserQuestion(data);
+        })
+    }
+
     return(
         <div>
             <button className="pageChange">
@@ -37,7 +47,9 @@ const SavedGames = () => {
                             <li 
                                 className="listOfGames" 
                                 key={saved.key} 
-                                onClick={() => {setConfirmMessage(!confirmMessage)}}
+                                onClick={() => {setConfirmMessage(!confirmMessage)
+                                    setSelectedGame(saved.key);
+                                }}
                             >
                                 <h3>Trivia: {saved.category}</h3>
                                 <p>{saved.numOfQuestions} questions</p>
@@ -53,7 +65,9 @@ const SavedGames = () => {
                 confirmMessage ? (
                     <div>
                         <p>Do you want to load this game?</p>
-                        <button>Yes</button>
+                        <Link to="/">
+                            <button onClick={loadGame}>Yes</button>
+                        </Link>
                         <button>No</button>
                     </div>
                 ) : null

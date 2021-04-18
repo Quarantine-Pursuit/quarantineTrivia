@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-
 const DisplayTrivia = (props) => {
     const [userChoice, setUserChoice] = useState('');
     console.log(props)
@@ -16,11 +15,9 @@ const DisplayTrivia = (props) => {
         }
     }
 
-
     const handleChange = (e) => {
         setUserChoice(e.target.value);
     }
-
 
     return(
         <section>

@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import DisplayTrivia from './DisplayTrivia.js';
 import SaveButton from './SaveButton.js';
+import NewGameButton from './NewGameButton.js';
 
 
 const SelectTrivia = (props) => {
@@ -51,8 +52,14 @@ const SelectTrivia = (props) => {
                     </div>
                     <button type="submit" className="startGame">Start</button>
                 </form>
-                
-                <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion} className="saveGame"/>
+
+                {
+                    props.userQuestion.length === 0 ? null :
+                    <div>
+                        <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion} className="saveGame"/>
+                        <NewGameButton setQuestion={props.setUserQuestion} setUserInput={props.setUserInput}/>
+                    </div>
+                }
 
                 {
                     props.userQuestion.map((key, i) => {

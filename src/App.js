@@ -47,7 +47,9 @@ function App() {
               setUserInput={setUserInput}
             />
           }/>
-          <Route exact path="/savedGames" component={SavedGames}/>
+          <Route exact path="/savedGames" render={() =>
+            <SavedGames setUserQuestion={setUserQuestion}/>
+          }/>
         </div>
 
         <Footer />
