@@ -17,7 +17,7 @@ const SaveButton = (props) => {
 
     return(
         <>
-            <button onClick={handleClick}>Save your game</button>
+            <button onClick={handleClick} className="saveGame">Save Game</button>
             {
                 saveGame === true ? (
                     <div>

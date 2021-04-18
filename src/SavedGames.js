@@ -1,13 +1,13 @@
-import {Link} from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import firebase from './firebase.js';
+import {Link} from 'react-router-dom';
+import {useState, useEffect} from 'react';
 
 const SavedGames = () => {
 
-    
-    const [confirmMessage, setConfirmMessage] = useState(false);
     const [displaySaved, setDisplaySaved] = useState([]);
-    useEffect( () => {
+    const [confirmMessage, setConfirmMessage] = useState(false);
+
+    useEffect(() => {
         const dbRef = firebase.database().ref();
         dbRef.on('value', (response) => {
             const data = response.val();
@@ -18,17 +18,15 @@ const SavedGames = () => {
                     key: key,
                     category: data[key][0].category,
                     numOfQuestions: data[key].length
-
                 })
             }
             setDisplaySaved(savedTrivia);
-        })
+        });
     }, []);
 
-    // console.log(displaySaved);
     return(
         <div>
-            <button>
+            <button className="pageChange">
               <Link to="/">Current Game</Link>
             </button>
             <ul>
@@ -60,9 +58,8 @@ const SavedGames = () => {
                     </div>
                 ) : null
             }
-            
         </div>
     )
-}
+};
 
 export default SavedGames;

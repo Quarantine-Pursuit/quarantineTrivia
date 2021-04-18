@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+
 const DisplayTrivia = (props) => {
 
     const [userChoice, setUserChoice] = useState('');
@@ -22,33 +23,50 @@ const DisplayTrivia = (props) => {
     return(
         <section>
             <div>
-                <h2 className="question">{props.question}</h2>
+                <h2>Question #</h2>
+                <p className="question">{props.question}</p>
                     {
                         props.incorrectAnswer.length === 1 ? (
                             <form action="submit" onSubmit={userSubmit}>
-                                <label htmlFor="true">True</label>
-                                <input type="radio" name="trueFalse" id="true" value="true" onChange={handleChange}/>
-                    
-                                <label htmlFor="false">False</label>
-                                <input type="radio" name="trueFalse" id="false" value="false" onChange={handleChange}/>
+                                <div className="answerChoices">
+                                    <div className="answer">
+                                        <input type="radio" name="trueFalse" id="true" value="true" onChange={handleChange}/>
+                                        <label htmlFor="true">True</label>
+                                    </div>
+                        
+                                    <div className="answer">
+                                        <input type="radio" name="trueFalse" id="false" value="false" onChange={handleChange}/>
+                                        <label htmlFor="false">False</label>
+                                    </div>
+                                </div>
 
-                                <button type="submit">Submit Answer</button>
+                                <button type="submit" className="submitAnswer">Submit Answer</button>
                             </form>
                         ) : (
                             <form action="submit" onSubmit={userSubmit}>
-                                <label htmlFor="questionOne">{props.correctAnswer}</label>
-                                <input type="radio" name="multipleChoice" id="questionOne" value="correct" onChange={handleChange}/>
+                                <div className="answerChoices">
+                                    <div className="answer">
+                                        <input type="radio" name="multipleChoice" id="questionOne" value="correct" onChange={handleChange}/>
+                                        <label htmlFor="questionOne">{props.correctAnswer}</label>
+                                    </div>
+                                    
+                                    <div className="answer">
+                                        <input type="radio" name="multipleChoice" id="questionTwo" value="wrong" onChange={handleChange}/>
+                                        <label htmlFor="questionTwo">{props.incorrectAnswer[0]}</label>
+                                    </div>
 
-                                <label htmlFor="questionTwo">{props.incorrectAnswer[0]}</label>
-                                <input type="radio" name="multipleChoice" id="questionTwo" value="wrong" onChange={handleChange}/>
+                                    <div className="answer">
+                                        <input type="radio" name="multipleChoice" id="questionThree" value="wrong" onChange={handleChange}/>
+                                        <label htmlFor="questionThree">{props.incorrectAnswer[1]}</label>
+                                    </div>
 
-                                <label htmlFor="questionThree">{props.incorrectAnswer[1]}</label>
-                                <input type="radio" name="multipleChoice" id="questionThree" value="wrong" onChange={handleChange}/>
+                                    <div className="answer">
+                                        <input type="radio" name="multipleChoice" id="questionFour" value="wrong" onChange={handleChange}/>
+                                        <label htmlFor="questionFour">{props.incorrectAnswer[2]}</label>
+                                    </div>
+                                </div>
 
-                                <label htmlFor="questionFour">{props.incorrectAnswer[2]}</label>
-                                <input type="radio" name="multipleChoice" id="questionFour" value="wrong" onChange={handleChange}/>
-
-                                <button type="submit">Submit Answer</button>
+                                <button type="submit" className="submitAnswer">Submit Answer</button>
                             </form>
                         )
                     }

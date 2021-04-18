@@ -8,13 +8,267 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+/* --------------------------------- */
 
-/* brand colors */
-/* #AFEDFF - skyblue */
-/* #FFB0C6 - pink */
-/* #9BD694 - light green */
+/* ---------------------- */
+/*    General Styling     */
+/* ---------------------- */
+
+html {
+    font-size: 125%;
+}
+
+body {
+    background: url(./assets/memphis-colorful.png);
+    font-family: 'Barlow', sans-serif;
+}
+
+header,
+footer {
+    background: url(./assets/geometry.png);
+    text-align: center;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+
+a:hover,
+a:focus {
+    color: #9BD694;
+}
+
+button {
+    background: #FFF;
+    padding: 10px 0;
+    transition-duration: 0.3s;
+}
+
+button:hover,
+button:focus {
+    border: 1px solid #000;
+    border-bottom: 5px solid #000;
+}
+
+.wrapper {
+    margin: 0 auto;
+    min-height: 60vh;
+}
+
+
+/* --------------------- */
+/*    Header Styling     */
+/* --------------------- */
+
+h1 {
+    -webkit-text-fill-color: #FAFAFA;
+    -webkit-text-stroke: 4px #FFB0C6;
+    color: #000;
+    border-bottom: 5px solid #FFB0C6;
+    font-family: 'Merienda One', cursive;
+    font-size: 4rem;
+    margin-bottom: 150px;
+    padding: 10px 0 25px 0;
+}
+
+
+/* --------------------------- */
+/*    Current Game Styling     */
+/* --------------------------- */
+
+.selectTrivia {
+    background: #FAFAFA;
+    border: 5px solid #AFEDFF;
+    border-radius: 15px;
+    margin: 0 auto;
+    padding: 50px;
+    position: relative;
+    width: 60%;
+}
+
+.selectTrivia::before {
+    content: '';
+    background: #AFEDFF;
+    border-radius: 15px;
+    height: 350px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-5deg);
+    width: 100%;
+    z-index: -1;
+}
+
+.pageChange {
+    background: #AFEDFF;
+    border: none;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+}
+
+.pageChange:hover,
+.pageChange:focus {
+    border: none;
+}
+
+.pageChange a {
+    color: #FFF;
+    padding: 10px 20px;
+    transition-duration: 0.3s;
+}
+
+.pageChange a:hover,
+.pageChange a:focus {
+    color: #000;
+}
+
+.selectTrivia .pageChange {
+    position: absolute;
+    top: -45px;
+    left: 70px
+}
+
+.triviaSetting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.triviaOptions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url(./assets/chevron-down-solid.svg);
+    background-position: 95% center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    border: none;
+    font-family: 'Barlow', sans-serif;
+    padding: 10px;
+}
+
+#categories {
+    border: 1px solid #9BD694;
+    border-bottom: 5px solid #9BD694;
+    width: 230px;
+}
+
+#questionNum {
+    border: 1px solid #FFB0C6;
+    border-bottom: 5px solid #FFB0C6;
+    width: 170px;
+}
+
+.startGame {
+    border: 7px solid #AFEDFF;
+    border-radius: 10px;
+    color: #AFEDFF;
+    font-family: 'Merienda One', cursive;
+    /* font-size: 2.5rem; */
+    /* padding: 15px 80px; */
+    margin-top: 80px;
+    text-transform: uppercase;
+}
+
+.startGame:hover,
+.startGame:focus {
+    background: #AFEDFF;
+    border: 7px solid #000;
+    color: #000;
+}
+
+.saveGame {
+    border: 1px solid #9BD694;
+    border-bottom: 5px solid #9BD694;
+}
+
+.saveGame:hover,
+.saveGame:focus {
+    background: #9BD694;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-top: 30px;
+}
+
+.question {
+    font: 1.2rem;
+    margin: 20px 0;
+}
+
+.answerChoices {
+    display: flex;
+    flex-direction: column;
+}
+
+.answer {
+    margin: 5px 0;
+}
+
+.answer input {
+    margin-right: 15px;
+}
+
+.submitAnswer {
+    border: 1px solid #AFEDFF;
+    border-bottom: 5px solid #AFEDFF;
+    margin: 30px 0;
+    position: absolute;
+    right: 50px;
+}
+
+.submitAnswer:hover,
+.submitAnswer:focus {
+    background: #AFEDFF;
+}
+
+
+/* ------------------------- */
+/*    Saved Game Styling     */
+/* ------------------------- */
 
 .listOfGames {
-    border: 1px solid #AFEDFF;
-    list-style: none;
+    border: 1px solid black;
+}
+
+.listOfGames:hover,
+.listOfGames:focus {
+    background: #ff0;
+}
+
+
+/* --------------------- */
+/*    Footer Styling     */
+/* --------------------- */
+
+footer {
+    border-top: 5px solid #9BD694;
+    font-size: 0.9rem;
+    padding: 10px 0 15px 0;
+}
+
+.teamAwesome {
+    margin: 10px 0;
 }

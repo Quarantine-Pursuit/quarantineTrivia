@@ -4,6 +4,7 @@ import { useState } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import SavedGames from './SavedGames.js';
 import SelectTrivia from './SelectTrivia';
+import Footer from './Footer.js'
 
 
 function App() {
@@ -32,17 +33,24 @@ function App() {
     <Router>
       <div className="App">
 
-        <Route exact path="/" render={() =>
-          <SelectTrivia
-            getTrivia={getTrivia}
-            userQuestion={userQuestion}
-            setUserQuestion={setUserQuestion}
-            userInput={userInput}
-            setUserInput={setUserInput}
-          />
-        }/>
+        <header>
+          <h1>Quarantine Pursuit</h1>
+        </header>
 
-        <Route exact path="/savedGames" component={SavedGames}/>
+        <div className="wrapper">
+          <Route exact path="/" render={() =>
+            <SelectTrivia
+              getTrivia={getTrivia}
+              userQuestion={userQuestion}
+              setUserQuestion={setUserQuestion}
+              userInput={userInput}
+              setUserInput={setUserInput}
+            />
+          }/>
+          <Route exact path="/savedGames" component={SavedGames}/>
+        </div>
+
+        <Footer />
         
       </div>
     </Router>

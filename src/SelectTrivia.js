@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import DisplayTrivia from './DisplayTrivia.js';
 import SaveButton from './SaveButton.js';
 
+
 const SelectTrivia = (props) => {
     const [answerCheck, setAnswerCheck] = useState();
 
@@ -20,35 +21,39 @@ const SelectTrivia = (props) => {
     };
 
     return(
-        <>
-            <button>
-                <Link to="/savedGames">Saved Games</Link>
-            </button>
-            <section>
-                <form action="submit" onSubmit={handleSubmit}>
-                <select name="categories" id="categories" value={props.userInput.categories} onChange={handleChange}>
-                    <option value="placeholder" disabled>Please select your categories</option>
-                    <option name="General Knowledge" value="9">General Knowledge</option>
-                    <option name="Sports" value="21">Sports</option>
-                    <option name="Geography" value="22">Geography</option>
-                    <option name="Celebrities" value="26">Celebrities</option>
-                    <option name="Vehicles" value="28">Vehicles</option>
-                    <option name="Entertainment: Film" value="11">Film</option>
-                    <option name="Entertainment: Japanese Anime & Manga" value="31">Anime and Manga</option>
-                </select>
+        <div>
+            <section className="selectTrivia">
+                <button className="pageChange">
+                    <Link to="/savedGames">Saved Games</Link>
+                </button>
+                <form action="submit" onSubmit={handleSubmit} className="triviaSetting">
+                    <div className="triviaOptions">
+                        <select name="categories" id="categories" value={props.userInput.categories} onChange={handleChange}>
+                            <option value="placeholder" disabled>Trivia Category</option>
+                            <option name="General Knowledge" value="9">General Knowledge</option>
+                            <option name="Sports" value="21">Sports</option>
+                            <option name="Geography" value="22">Geography</option>
+                            <option name="Celebrities" value="26">Celebrities</option>
+                            <option name="Vehicles" value="28">Vehicles</option>
+                            <option name="Entertainment: Film" value="11">Film</option>
+                            <option name="Entertainment: Japanese Anime & Manga" value="31">Anime and Manga</option>
+                        </select>
 
-                <select name="questionNum" id="questionNum" value={props.userInput.questionNum} onChange={handleChange}>
-                    <option value="placeholder" disabled>Select the amount of questions</option>
-                    <option name="5" value="5">5</option>
-                    <option name="6" value="6">6</option>
-                    <option name="7"value="7">7</option>
-                    <option name="8"value="8">8</option>
-                    <option name="9"value="9">9</option>
-                    <option name="10"value="10">10</option>
-                </select>
-
-                <button type="submit">Start Trivia</button>
+                        <select name="questionNum" id="questionNum" value={props.userInput.questionNum} onChange={handleChange}>
+                            <option value="placeholder" disabled>Question Qty.</option>
+                            <option name="5" value="5">5</option>
+                            <option name="6" value="6">6</option>
+                            <option name="7"value="7">7</option>
+                            <option name="8"value="8">8</option>
+                            <option name="9"value="9">9</option>
+                            <option name="10"value="10">10</option>
+                        </select>
+                    </div>
+                    <button type="submit" className="startGame">Start</button>
                 </form>
+                
+                <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion} className="saveGame"/>
+
                 {
                     props.userQuestion.map((key, i) => {
                         return(
@@ -74,9 +79,8 @@ const SelectTrivia = (props) => {
                     ) : null
                 }
 
-                <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
             </section>
-        </>
+        </div>
     )
 }
 
