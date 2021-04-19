@@ -11,8 +11,8 @@ function App() {
   const [userInput, setUserInput] = useState({
     categories: "placeholder",
     questionNum: "placeholder",
-    difficulty: "placeholder",
-    type: "placeholder"
+    type: "placeholder",
+    difficulty: "placeholder"
   });
 
   const [userQuestion, setUserQuestion] = useState([]);
@@ -25,8 +25,8 @@ function App() {
       params: {
         amount: userInput.questionNum,
         category: userInput.categories,
-        difficulty: userInput.difficulty,
-        type: userInput.type
+        type: userInput.type,
+        difficulty: userInput.difficulty
       }
     }).then( (response) => {
       setUserQuestion(response.data.results)

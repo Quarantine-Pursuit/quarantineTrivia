@@ -19,9 +19,11 @@ const SaveButton = (props) => {
             <button onClick={handleClick} className="saveGame">Save Game</button>
             {
                 saveGame === true ? (
-                    <div>
-                        <p>Your game has been saved!</p>
-                        <button onClick={closeClick}>Close</button>
+                    <div className="popUpContainer">
+                        <div className="popUp">
+                            <p>Your game has been saved!</p>
+                            <button onClick={closeClick}>Close</button>
+                        </div>
                     </div>
                 ) : null
             }

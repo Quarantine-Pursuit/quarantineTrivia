@@ -30,7 +30,6 @@ footer {
 }
 
 h1,
-h2,
 h3,
 p {
     margin: 0;
@@ -55,6 +54,7 @@ a:focus {
 
 button {
     background: #FFF;
+    font-family: 'Barlow', sans-serif;
     padding: 10px 0;
     transition-duration: 0.3s;
 }
@@ -67,7 +67,9 @@ button:focus {
 
 .wrapper {
     margin: 0 auto;
-    min-height: 60vh;
+    min-height: 70vh;
+    width: 85%;
+    max-width: 1400px;
 }
 
 
@@ -76,14 +78,22 @@ button:focus {
 /* --------------------- */
 
 h1 {
-    -webkit-text-fill-color: #FAFAFA;
-    -webkit-text-stroke: 4px #FFB0C6;
-    color: #000;
+    color: #FAFAFA;
     border-bottom: 5px solid #FFB0C6;
     font-family: 'Merienda One', cursive;
     font-size: 4rem;
     margin-bottom: 150px;
     padding: 10px 0 25px 0;
+    position: relative;
+    text-shadow:
+        -3px -3px 0 #FFB0C6,
+        0 -3px 0 #FFB0C6,
+        3px -3px 0 #FFB0C6,
+        3px 0 0 #FFB0C6,
+        3px 3px 0 #FFB0C6,
+        0 3px 0 #FFB0C6,
+        -3px 3px 0 #FFB0C6,
+        -3px 0 0 #FFB0C6;
 }
 
 
@@ -91,25 +101,26 @@ h1 {
 /*    Current Game Styling     */
 /* --------------------------- */
 
-.selectTrivia {
+.triviaContainer {
     background: #FAFAFA;
     border: 5px solid #AFEDFF;
     border-radius: 15px;
+    height: 550px;
     margin: 0 auto;
+    /* overflow: hidden; */
     padding: 50px;
     position: relative;
-    width: 60%;
 }
 
-.selectTrivia::before {
+.triviaContainer::before {
     content: '';
     background: #AFEDFF;
     border-radius: 15px;
-    height: 350px;
+    height: 550px;
     position: absolute;
     top: 0;
     left: 0;
-    transform: rotate(-5deg);
+    transform: rotate(-7deg);
     width: 100%;
     z-index: -1;
 }
@@ -137,7 +148,7 @@ h1 {
     color: #000;
 }
 
-.selectTrivia .pageChange {
+.triviaContainer .pageChange {
     position: absolute;
     top: -45px;
     left: 70px
@@ -168,13 +179,15 @@ select {
     padding: 10px;
 }
 
-#categories {
+#categories,
+#type {
     border: 1px solid #9BD694;
     border-bottom: 5px solid #9BD694;
     width: 230px;
 }
 
-#questionNum {
+#questionNum,
+#difficulty {
     border: 1px solid #FFB0C6;
     border-bottom: 5px solid #FFB0C6;
     width: 170px;
@@ -185,9 +198,9 @@ select {
     border-radius: 10px;
     color: #AFEDFF;
     font-family: 'Merienda One', cursive;
-    /* font-size: 2.5rem; */
-    /* padding: 15px 80px; */
-    margin-top: 80px;
+    font-size: 2.5rem;
+    padding: 15px 80px;
+    margin: 150px 0 80px 0;
     text-transform: uppercase;
 }
 
@@ -198,9 +211,20 @@ select {
     color: #000;
 }
 
+.gameMenu {
+    display: flex;
+}
+
+.saveGame,
+.newGame,
+.submitAnswer {
+    padding: 10px 25px;
+}
+
 .saveGame {
     border: 1px solid #9BD694;
     border-bottom: 5px solid #9BD694;
+    margin-right: 20px;
 }
 
 .saveGame:hover,
@@ -208,9 +232,59 @@ select {
     background: #9BD694;
 }
 
+.newGame {
+    border: 1px solid #FFB0C6;
+    border-bottom: 5px solid #FFB0C6;
+}
+
+.newGame:hover,
+.newGame:focus {
+    background: #FFB0C6;
+}
+
+.newGame a:hover,
+.newGame a:focus {
+    color: #000;
+}
+
+.popUpContainer {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.popUp {
+    background: rgba(0, 0, 0, 0.85);
+    color: #FFF;
+    height: 250px;
+    margin: 350px auto;
+    padding: 60px;
+    text-align: center;
+    width: 450px;
+}
+
+.popUp button {
+    background: none;
+    border: none;
+    color: #FFF;
+    font-size: 2rem;
+    margin: 50px 50px 0 50px;
+}
+
+.popUp button:hover,
+.popUp button:focus {
+    color: #FFB0C6;
+}
+
+.popUp .affirm:hover,
+.popUp .affirm:focus {
+    color: #9BD694;
+}
+
 h2 {
-    font-size: 1.2rem;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .question {
@@ -249,15 +323,51 @@ h2 {
 /*    Saved Game Styling     */
 /* ------------------------- */
 
+.savedGames {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-color: #AFEDFF #D1D1D1;
+    scrollbar-width: thin;
+}
+
+.savedGames::-webkit-scrollbar {
+    width: 8px;
+}
+
+.savedGames::-webkit-scrollbar-track {
+    background: #D1D1D1;
+    border-radius: 10px;
+}
+
+.savedGames::-webkit-scrollbar-thumb {
+    background-color: #AFEDFF;
+    border-radius: 10px;
+}
+
 .listOfGames {
-    border: 1px solid black;
+    border: 3px solid #AFEDFF;
+    border-radius: 10px;
+    height: 100px;
+    margin: 10px 15px 10px 0;
+    padding: 10px;
+    transition-duration: 0.3s;
+    width: 260px;
 }
 
 .listOfGames:hover,
 .listOfGames:focus {
-    background: #ff0;
+    background: #AFEDFF;
 }
 
+h3 {
+    font-size: 1rem;
+}
+
+.regularWeight {
+    font-weight: normal;
+}
 
 /* --------------------- */
 /*    Footer Styling     */
@@ -266,6 +376,7 @@ h2 {
 footer {
     border-top: 5px solid #9BD694;
     font-size: 0.9rem;
+    margin-top: 80px;
     padding: 10px 0 15px 0;
 }
 

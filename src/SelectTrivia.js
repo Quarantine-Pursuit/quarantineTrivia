@@ -23,7 +23,7 @@ const SelectTrivia = (props) => {
 
     return(
         <div>
-            <section className="selectTrivia">
+            <section className="triviaContainer">
                 <button className="pageChange">
                     <Link to="/savedGames">Saved Games</Link>
                 </button>
@@ -45,11 +45,18 @@ const SelectTrivia = (props) => {
                                 <select name="questionNum" id="questionNum" value={props.userInput.questionNum} onChange={handleChange}>
                                     <option value="placeholder" disabled>Question Qty.</option>
                                     <option name="5" value="5">5</option>
-                                    <option name="6" value="6">6</option>
-                                    <option name="7" value="7">7</option>
                                     <option name="8" value="8">8</option>
-                                    <option name="9" value="9">9</option>
-                                    <option name="10" value="10">10</option>
+                                    <option name="11" value="11">11</option>
+                                    <option name="14" value="14">14</option>
+                                    <option name="17" value="17">17</option>
+                                    <option name="20" value="20">20</option>
+                                </select>
+
+                                <select name="type" id="type" value={props.userInput.type} onChange={handleChange}>
+                                    <option value="placeholder" disabled>Question Type</option>
+                                    <option name="multiple" value="multiple">Multiple Choice</option>
+                                    <option name="boolean" value="boolean">True/False</option>
+                                    <option name="mix" value="">Mix</option>
                                 </select>
 
                                 <select name="difficulty" id="difficulty" value={props.userInput.difficulty} onChange={handleChange}>
@@ -57,13 +64,6 @@ const SelectTrivia = (props) => {
                                     <option name="easy" value="easy">Easy</option>
                                     <option name="medium" value="medium">Medium</option>
                                     <option name="hard" value="hard">Hard</option>
-                                    <option name="mix" value="">Mix</option>
-                                </select>
-
-                                <select name="type" id="type" value={props.userInput.type} onChange={handleChange}>
-                                    <option value="placeholder" disabled>Question Type</option>
-                                    <option name="multiple" value="multiple">Multiple Choice</option>
-                                    <option name="boolean" value="boolean">True/False</option>
                                     <option name="mix" value="">Mix</option>
                                 </select>
                             </div>
@@ -74,11 +74,12 @@ const SelectTrivia = (props) => {
 
                 {
                     props.userQuestion.length === 0 ? null :
-                    <div>
-                        <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion} className="saveGame"/>
+                    <div className="gameMenu">
+                        <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
                         <NewGameButton setQuestion={props.setUserQuestion} setUserInput={props.setUserInput}/>
                     </div>
                 }
+
                 {
                     props.userQuestion.map((key, i) => {
                         return(
@@ -94,6 +95,7 @@ const SelectTrivia = (props) => {
                         )
                     })
                 }
+
                 {
                     answerCheck === true ? (
                         <div>
@@ -103,7 +105,6 @@ const SelectTrivia = (props) => {
                         <h2>You are wrong!</h2>
                     ) : null
                 }
-
             </section>
         </div>
     )

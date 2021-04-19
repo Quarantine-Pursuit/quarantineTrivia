@@ -39,15 +39,14 @@ const SavedGames = (props) => {
     }
 
     return(
-        <div>
+        <div className="triviaContainer">
             <button className="pageChange">
               <Link to="/">Current Game</Link>
             </button>
-            <ul>
+            <ul className="savedGames">
                 {
                     displaySaved.map((saved) => {
                         return(
-                        
                             <li 
                                 className="listOfGames" 
                                 key={saved.key} 
@@ -55,23 +54,23 @@ const SavedGames = (props) => {
                                     setSelectedGame(saved.key);
                                 }}
                             >
-                                <h3>Trivia: {saved.category}</h3>
-                                <p>{saved.numOfQuestions} questions</p>
+                                <h3>Trivia: <span className="regularWeight">{saved.category}</span></h3>
+                                <p>{saved.numOfQuestions} Questions</p>
                             </li>
-                                
-                        
                         )
                     })
                 }
             </ul>
             {
                 confirmMessage ? (
-                    <div>
-                        <p>Do you want to load this game?</p>
-                        <Link to="/">
-                            <button onClick={loadGame}>Yes</button>
-                        </Link>
-                        <button onClick={closeClick}>No</button>
+                    <div className="popUpContainer">
+                        <div className="popUp">
+                            <p>Would you like to load this game?</p>
+                            <Link to="/">
+                                <button onClick={loadGame} className="affirm">Yes</button>
+                            </Link>
+                            <button onClick={closeClick}>No</button>
+                        </div>
                     </div>
                 ) : null
             }
