@@ -106,8 +106,8 @@ h1 {
     border: 5px solid #AFEDFF;
     border-radius: 15px;
     height: 550px;
+    max-width: 1100px;
     margin: 0 auto;
-    /* overflow: hidden; */
     padding: 50px;
     position: relative;
 }
@@ -213,6 +213,7 @@ select {
 
 .gameMenu {
     display: flex;
+    padding-left: 10px;
 }
 
 .saveGame,
@@ -308,9 +309,9 @@ h2 {
 .submitAnswer {
     border: 1px solid #AFEDFF;
     border-bottom: 5px solid #AFEDFF;
-    margin: 30px 0;
-    position: absolute;
-    right: 50px;
+    /* margin: 30px 0; */
+    position: relative;
+    right: -600px;
 }
 
 .submitAnswer:hover,
@@ -318,6 +319,9 @@ h2 {
     background: #AFEDFF;
 }
 
+fieldset {
+    border: none;
+}
 
 /* ------------------------- */
 /*    Saved Game Styling     */
@@ -382,4 +386,17 @@ footer {
 
 .teamAwesome {
     margin: 10px 0;
+}
+
+
+/* testing shit */
+.triviaHidden {
+    height: 350px;
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+}
+
+.questionBox {
+    min-width: 850px;
 }

@@ -21,6 +21,7 @@ const SelectTrivia = (props) => {
         })
     };
 
+
     return(
         <div>
             <section className="triviaContainer">
@@ -79,28 +80,26 @@ const SelectTrivia = (props) => {
                         <NewGameButton setQuestion={props.setUserQuestion} setUserInput={props.setUserInput}/>
                     </div>
                 }
-
-                {
-                    props.userQuestion.map((key, i) => {
-                        return(
-                                <DisplayTrivia
-                                    category={key.category}
-                                    correctAnswer={key.correct_answer}
-                                    incorrectAnswer={key.incorrect_answers}
-                                    question={key.question}
-                                    key={`key${i}`}
-                                    answerChecker={setAnswerCheck}
-                                    questionNum={i}
-                                />
-                        )
-                    })
-                }
-
+                <div className="triviaHidden">
+                    {
+                        props.userQuestion.map((key, i) => {
+                            return(
+                                    <DisplayTrivia
+                                        category={key.category}
+                                        correctAnswer={key.correct_answer}
+                                        incorrectAnswer={key.incorrect_answers}
+                                        question={key.question}
+                                        key={`key${i}`}
+                                        answerChecker={setAnswerCheck}
+                                        questionNum={i}
+                                    />
+                            )
+                        })
+                    }
+                </div>
                 {
                     answerCheck === true ? (
-                        <div>
                         <h2>You are correct!</h2>
-                        </div>
                     ) : answerCheck === false ? (
                         <h2>You are wrong!</h2>
                     ) : null

@@ -30,7 +30,6 @@ function App() {
       }
     }).then( (response) => {
       setUserQuestion(response.data.results)
-      console.log(response.data.results)
     })
   };
 
