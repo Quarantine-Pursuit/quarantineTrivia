@@ -5,7 +5,6 @@ const DisplayTrivia = (props) => {
     const [safeQuestion, setSafeQuestion] = useState('');
     const [safeAnswer, setSafeAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
-    
 
     const userSubmit = (e) => {
         e.preventDefault();
@@ -58,12 +57,12 @@ const DisplayTrivia = (props) => {
                         <fieldset>
                             <div className="answerChoices">
                                 <div className="answer">
-                                    <input type="radio" name="trueFalse" id={`${props.questionNum}true`} value="true" onChange={handleChange}/>
+                                    <input type="radio" name="trueFalse" id={`${props.questionNum}true`} value="True" onChange={handleChange}/>
                                     <label htmlFor={`${props.questionNum}true`}>True</label>
                                 </div>
                     
                                 <div className="answer">
-                                    <input type="radio" name="trueFalse" id={`${props.questionNum}false`} value="false" onChange={handleChange}/>
+                                    <input type="radio" name="trueFalse" id={`${props.questionNum}false`} value="False" onChange={handleChange}/>
                                     <label htmlFor={`${props.questionNum}false`}>False</label>
                                 </div>
                             </div>

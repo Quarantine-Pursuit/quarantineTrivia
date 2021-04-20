@@ -126,7 +126,7 @@ h1 {
 }
 
 .triviaHidden {
-    height: 400px;
+    height: auto;
     /* overflow: hidden; */
     padding-left: 10px;
     display: flex;
