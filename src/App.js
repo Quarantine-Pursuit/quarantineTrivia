@@ -29,7 +29,7 @@ function App() {
         difficulty: userInput.difficulty
       }
     }).then( (response) => {
-      setUserQuestion(response.data.results)
+      setUserQuestion(response.data.results);
     })
   };
 

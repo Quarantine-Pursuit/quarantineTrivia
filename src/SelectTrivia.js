@@ -79,11 +79,31 @@ const SelectTrivia = (props) => {
             <div className="triviaHidden">
                 {
                     props.userQuestion.map((key, i) => {
+                        const allAnswers = [];
+                        const incorrect = key.incorrect_answers;
+                        allAnswers.push(incorrect[0], incorrect[1], incorrect[2]);
+                        allAnswers.push(key.correct_answer);
+
+                        const shuffledAnswers = (array) => {
+                            let currentIndex = array.length, temporaryValue, randomIndex;
+                            while (currentIndex !== 0) {
+                                randomIndex = Math.floor(Math.random() * currentIndex);
+                                currentIndex -= 1;
+                                temporaryValue = array[currentIndex];
+                                array[currentIndex] = array[randomIndex];
+                                array[randomIndex] = temporaryValue;
+                            };
+                            return array;
+                        };
+
+                        shuffledAnswers(allAnswers);
+                        
                         return(
                             <DisplayTrivia
                                 category={key.category}
                                 correctAnswer={key.correct_answer}
                                 incorrectAnswer={key.incorrect_answers}
+                                answers={allAnswers}
                                 question={key.question}
                                 key={`key${i}`}
                                 questionNum={i}
