@@ -5,6 +5,7 @@ const DisplayTrivia = (props) => {
     const [safeQuestion, setSafeQuestion] = useState('');
     const [safeAnswer, setSafeAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
+    const [safeIncorrectAnswer, setSafeIncorrectAnswer] = useState([]);
     
 
     const userSubmit = (e) => {
@@ -37,14 +38,21 @@ const DisplayTrivia = (props) => {
         const placeholderTwo = document.createElement('div');
         placeholder.innerHTML = props.question;
         const safeQuestion = placeholder.textContent;
+        const newWrongAnswer = props.incorrectAnswer.map( (array) => {
+            const placeholderThree = document.createElement('div');
+            placeholderThree.innerHTML = array;
+            const safeIncorrectAnswer = placeholderThree.textContent;
+            return safeIncorrectAnswer
+        })
 
         placeholderTwo.innerHTML = props.correctAnswer;
         const safeAnswer = placeholderTwo.textContent;
 
         setSafeQuestion(safeQuestion);
         setSafeAnswer(safeAnswer);
+        setSafeIncorrectAnswer(newWrongAnswer)
 
-    }, [props.question, props.correctAnswer])
+    }, [props.question, props.correctAnswer, props.incorrectAnswer])
 
 
     return(
@@ -82,18 +90,18 @@ const DisplayTrivia = (props) => {
                                 
                                 <div className="answer">
                                     <input type="radio" name="multipleChoice" id={`${props.questionNum}questionTwo`} value="wrong" onChange={handleChange}/>
-                                    <label htmlFor={`${props.questionNum}questionTwo`}>{props.incorrectAnswer[0]}</label>
+                                    <label htmlFor={`${props.questionNum}questionTwo`}>{safeIncorrectAnswer[0]}</label>
                                 </div>
 
                                 <div className="answer">
                                     <input type="radio" name="multipleChoice" id={`${props.questionNum}questionThree`} value="wrong" onChange={handleChange}/>
-                                    <label htmlFor={`${props.questionNum}questionThree`}>{props.incorrectAnswer[1]}</label>
+                                    <label htmlFor={`${props.questionNum}questionThree`}>{safeIncorrectAnswer[1]}</label>
                                 </div>
                             </div>
 
                             <div className="answer">
                                 <input type="radio" name="multipleChoice" id={`${props.questionNum}questionFour`} value="wrong" onChange={handleChange}/>
-                                <label htmlFor={`${props.questionNum}questionFour`}>{props.incorrectAnswer[2]}</label>
+                                <label htmlFor={`${props.questionNum}questionFour`}>{safeIncorrectAnswer[2]}</label>
                             </div>
                             <button type="submit" className="submitAnswer">Submit Answer</button>
                         </fieldset>
