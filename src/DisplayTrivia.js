@@ -128,4 +128,4 @@ const DisplayTrivia = (props) => {
     ) 
 }
 
-export default DisplayTrivia 
+export default DisplayTrivia;
