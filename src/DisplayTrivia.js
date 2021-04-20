@@ -11,12 +11,21 @@ const DisplayTrivia = (props) => {
         e.preventDefault();
         if (userChoice === 'correct') {
             setAnswerCheck(true);
+            popUpEffect();
         } else if (userChoice === props.correctAnswer.toLowerCase()) {
             setAnswerCheck(true);
+            popUpEffect();
         } else {
             setAnswerCheck(false);
+            popUpEffect();
         }
         e.target[0].setAttribute('disabled', true);
+    }
+
+    const popUpEffect = () => {
+        setTimeout(() => {
+            setAnswerCheck(undefined);
+        }, 2000);
     }
 
     const handleChange = (e) => {
@@ -37,11 +46,6 @@ const DisplayTrivia = (props) => {
 
     }, [props.question, props.correctAnswer])
 
-    useEffect(() => {
-        setTimeout(() => {
-            setAnswerCheck(null);
-        }, 2500);
-    }, [answerCheck])
 
     return(
         <div className="questionBox">
