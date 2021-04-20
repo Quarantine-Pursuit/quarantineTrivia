@@ -125,6 +125,13 @@ h1 {
     z-index: -1;
 }
 
+.triviaHidden {
+    height: 400px;
+    /* overflow: hidden; */
+    padding-left: 10px;
+    display: flex;
+}
+
 .pageChange {
     background: #AFEDFF;
     border: none;
@@ -179,15 +186,15 @@ select {
     padding: 10px;
 }
 
-#categories,
-#type {
+.categories,
+.type {
     border: 1px solid #9BD694;
     border-bottom: 5px solid #9BD694;
     width: 230px;
 }
 
-#questionNum,
-#difficulty {
+.questionNum,
+.difficulty {
     border: 1px solid #FFB0C6;
     border-bottom: 5px solid #FFB0C6;
     width: 170px;
@@ -284,13 +291,13 @@ select {
     color: #9BD694;
 }
 
-h2 {
-    margin-top: 50px;
+.questionBox {
+    min-width: 100%;
 }
 
-.question {
-    font: 1.2rem;
-    margin: 20px 0;
+.questionContainer {
+    margin-top: 50px;
+    padding-bottom: 20px;
 }
 
 .answerChoices {
@@ -309,9 +316,8 @@ h2 {
 .submitAnswer {
     border: 1px solid #AFEDFF;
     border-bottom: 5px solid #AFEDFF;
-    /* margin: 30px 0; */
-    position: relative;
-    right: -600px;
+    display: block;
+    margin: 7% 0 0 auto;
 }
 
 .submitAnswer:hover,
@@ -321,7 +327,10 @@ h2 {
 
 fieldset {
     border: none;
+    height: 150px;
+    padding: 0;
 }
+
 
 /* ------------------------- */
 /*    Saved Game Styling     */
@@ -373,6 +382,7 @@ h3 {
     font-weight: normal;
 }
 
+
 /* --------------------- */
 /*    Footer Styling     */
 /* --------------------- */
@@ -386,17 +396,4 @@ footer {
 
 .teamAwesome {
     margin: 10px 0;
-}
-
-
-/* testing shit */
-.triviaHidden {
-    height: 350px;
-    overflow: hidden;
-    padding: 10px;
-    display: flex;
-}
-
-.questionBox {
-    min-width: 850px;
 }
