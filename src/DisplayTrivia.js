@@ -4,16 +4,17 @@ const DisplayTrivia = (props) => {
     const [userChoice, setUserChoice] = useState('');
     const [safeQuestion, setSafeQuestion] = useState('');
     const [safeAnswer, setSafeAnswer] = useState('');
-
+    const [answerCheck, setAnswerCheck] = useState();
+    
 
     const userSubmit = (e) => {
         e.preventDefault();
         if (userChoice === 'correct') {
-            props.answerChecker(true);
+            setAnswerCheck(true);
         } else if (userChoice === props.correctAnswer.toLowerCase()) {
-            props.answerChecker(true);
+            setAnswerCheck(true);
         } else {
-            props.answerChecker(false);
+            setAnswerCheck(false);
         }
         e.target[0].setAttribute('disabled', true);
     }
@@ -36,32 +37,39 @@ const DisplayTrivia = (props) => {
 
     }, [props.question, props.correctAnswer])
 
+    useEffect(() => {
+        setTimeout(() => {
+            setAnswerCheck(null);
+        }, 2500);
+    }, [answerCheck])
 
     return(
         <div className="questionBox">
-            <h2>Question #{props.questionNum +1}</h2>
-            <p className="question">{safeQuestion}</p>
-                {
-                    props.incorrectAnswer.length === 1 ? (
-                        <form action="submit" onSubmit={userSubmit}>
-                            <fieldset>
-                            <div className="answerChoices">
-                                <div className="answer">
-                                    <input type="radio" name="trueFalse" id={`${props.questionNum}true`} value="true" onChange={handleChange}/>
-                                    <label htmlFor={`${props.questionNum}true`}>True</label>
-                                </div>
-                    
-                                <div className="answer">
-                                    <input type="radio" name="trueFalse" id={`${props.questionNum}false`} value="false" onChange={handleChange}/>
-                                    <label htmlFor={`${props.questionNum}false`}>False</label>
-                                </div>
+            <div className="questionContainer">
+                <h2>Question #{props.questionNum +1}</h2>
+                <p className="question">{safeQuestion}</p>
+            </div>
+            {
+                props.incorrectAnswer.length === 1 ? (
+                    <form action="submit" onSubmit={userSubmit}>
+                        <fieldset>
+                        <div className="answerChoices">
+                            <div className="answer">
+                                <input type="radio" name="trueFalse" id={`${props.questionNum}true`} value="true" onChange={handleChange}/>
+                                <label htmlFor={`${props.questionNum}true`}>True</label>
                             </div>
-                            <button type="submit" className="submitAnswer">Submit Answer</button>
-                            </fieldset>
-                        </form>
-                    ) : (
-                        <form action="submit" onSubmit={userSubmit}>
-                            <fieldset>
+                
+                            <div className="answer">
+                                <input type="radio" name="trueFalse" id={`${props.questionNum}false`} value="false" onChange={handleChange}/>
+                                <label htmlFor={`${props.questionNum}false`}>False</label>
+                            </div>
+                        </div>
+                        <button type="submit" className="submitAnswer">Submit Answer</button>
+                        </fieldset>
+                    </form>
+                ) : (
+                    <form action="submit" onSubmit={userSubmit}>
+                        <fieldset>
                             <div className="answerChoices">
                                 <div className="answer">
                                     <input type="radio" name="multipleChoice" id={`${props.questionNum}questionOne`} value="correct" onChange={handleChange}/>
@@ -77,17 +85,33 @@ const DisplayTrivia = (props) => {
                                     <input type="radio" name="multipleChoice" id={`${props.questionNum}questionThree`} value="wrong" onChange={handleChange}/>
                                     <label htmlFor={`${props.questionNum}questionThree`}>{props.incorrectAnswer[1]}</label>
                                 </div>
+                            </div>
 
-                                <div className="answer">
-                                    <input type="radio" name="multipleChoice" id={`${props.questionNum}questionFour`} value="wrong" onChange={handleChange}/>
-                                    <label htmlFor={`${props.questionNum}questionFour`}>{props.incorrectAnswer[2]}</label>
-                                </div>
+                            <div className="answer">
+                                <input type="radio" name="multipleChoice" id={`${props.questionNum}questionFour`} value="wrong" onChange={handleChange}/>
+                                <label htmlFor={`${props.questionNum}questionFour`}>{props.incorrectAnswer[2]}</label>
                             </div>
                             <button type="submit" className="submitAnswer">Submit Answer</button>
-                            </fieldset>
-                        </form>
-                    )
-                }
+                        </fieldset>
+                    </form>
+                )
+            }
+
+            {
+                answerCheck === true ? (
+                    <div className="popUpContainer">
+                        <div className="popUp">
+                            <h2 className="answerCheck">You are correct!</h2>
+                        </div>
+                    </div>
+                ) : answerCheck === false ? (
+                    <div className="popUpContainer">
+                        <div className="popUp">
+                            <h2 className="answerCheck">You are wrong!</h2>
+                        </div>
+                    </div>
+                ) : null
+            }
         </div>
     ) 
 }
