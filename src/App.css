@@ -299,6 +299,11 @@ select {
     margin-top: 40px;
 }
 
+.popUp .loadGameMessage,
+.popUp .newGameMessage {
+    margin-top: 0;
+}
+
 .questionBox {
     min-width: 100%;
 }
