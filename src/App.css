@@ -291,6 +291,14 @@ select {
     color: #9BD694;
 }
 
+.popUp p {
+    margin-top: 50px;
+}
+
+.popUp h2 {
+    margin-top: 40px;
+}
+
 .questionBox {
     min-width: 100%;
 }
