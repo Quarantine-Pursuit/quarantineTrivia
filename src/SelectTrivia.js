@@ -1,9 +1,31 @@
 import {Link} from 'react-router-dom';
+import {useState, useEffect} from 'react';
 import DisplayTrivia from './DisplayTrivia.js';
 import SaveButton from './SaveButton.js';
 import NewGameButton from './NewGameButton.js';
 
 const SelectTrivia = (props) => {
+
+    // const [triviaResult, setTriviaResult] = useState(null);
+    const [counter, setCounter] = useState(0);
+    const [questions, setQuestions] = useState([]);
+    const [index, setIndex] = useState(0)
+
+    
+    
+    useEffect( () => {
+        const newObj = props.userQuestion.map( (key) => {
+            return ({
+                question: key.question,
+                correctAnswer: key.correct_answer,
+                incorrectAnswer: key.incorrect_answers
+            })
+        })
+        setQuestions(newObj)       
+    }, [props.userQuestion])
+
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault(e);
@@ -17,6 +39,12 @@ const SelectTrivia = (props) => {
             [e.target.name]: value
         })
     };
+
+    const counterSystem = () => {
+        setCounter(counter + 1);
+    }
+
+    
 
     return(
         <section className="triviaContainer">
@@ -70,47 +98,33 @@ const SelectTrivia = (props) => {
 
             {
                 props.userQuestion.length === 0 ? null :
-                <div className="gameMenu">
-                    <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
-                    <NewGameButton setQuestion={props.setUserQuestion} setUserInput={props.setUserInput}/>
+                <div>
+                    <div className="gameMenu">
+                        <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
+                        <NewGameButton setUserQuestion={props.setUserQuestion} setUserInput={props.setUserInput} setIndex={setIndex}/>
+                    </div>
+                    <h2 className="counter">Score: {counter}/{props.userQuestion.length}</h2>
                 </div>
             }
+
+            {/* {
+                triviaResult === false ? (
+                <div className="popUpContainer">
+                    <div className="popUp">
+                        <p>No trivia found. Please try again with different selections.</p>
+                    </div>
+                </div>
+                ) : null
+            } */}
             
             <div className="triviaHidden">
-                {
-                    props.userQuestion.map((key, i) => {
-                        const allAnswers = [];
-                        const incorrect = key.incorrect_answers;
-                        allAnswers.push(incorrect[0], incorrect[1], incorrect[2]);
-                        allAnswers.push(key.correct_answer);
-
-                        const shuffledAnswers = (array) => {
-                            let currentIndex = array.length, temporaryValue, randomIndex;
-                            while (currentIndex !== 0) {
-                                randomIndex = Math.floor(Math.random() * currentIndex);
-                                currentIndex -= 1;
-                                temporaryValue = array[currentIndex];
-                                array[currentIndex] = array[randomIndex];
-                                array[randomIndex] = temporaryValue;
-                            };
-                            return array;
-                        };
-
-                        shuffledAnswers(allAnswers);
-                        
-                        return(
-                            <DisplayTrivia
-                                category={key.category}
-                                correctAnswer={key.correct_answer}
-                                incorrectAnswer={key.incorrect_answers}
-                                answers={allAnswers}
-                                question={key.question}
-                                key={`key${i}`}
-                                questionNum={i}
-                            />
-                        )
-                    })
-                }
+            {
+                questions.length > 0 ? <DisplayTrivia 
+                counterSystem={counterSystem}
+                question={questions[`${index}`]}
+                setIndex={setIndex}
+                index={index} /> : null
+            }
             </div>
         </section>
     )
