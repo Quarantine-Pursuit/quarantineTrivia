@@ -4,7 +4,7 @@ import { useState } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import SavedGames from './SavedGames.js';
 import SelectTrivia from './SelectTrivia';
-import Footer from './Footer.js'
+import Footer from './Footer.js';
 
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
       setUserQuestion(response.data.results);
     })
   };
-
+  
   return (
     <Router>
       <div className="App">

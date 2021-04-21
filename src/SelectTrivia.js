@@ -1,13 +1,22 @@
 import {Link} from 'react-router-dom';
+import {useState} from 'react';
 import DisplayTrivia from './DisplayTrivia.js';
 import SaveButton from './SaveButton.js';
 import NewGameButton from './NewGameButton.js';
 
 const SelectTrivia = (props) => {
 
+    // const [triviaResult, setTriviaResult] = useState(null);
+    const [counter, setCounter] = useState(0);
+
     const handleSubmit = (e) => {
         e.preventDefault(e);
         props.getTrivia();
+        // if (props.userQuestion.length === 0) {
+            // setTriviaResult(false);
+        // } else {
+            // setTriviaResult(null);
+        // }
     };
     
     const handleChange = (e) => {
@@ -17,6 +26,10 @@ const SelectTrivia = (props) => {
             [e.target.name]: value
         })
     };
+
+    const counterSystem = () => {
+        setCounter(counter + 1);
+    }
 
     return(
         <section className="triviaContainer">
@@ -70,11 +83,24 @@ const SelectTrivia = (props) => {
 
             {
                 props.userQuestion.length === 0 ? null :
-                <div className="gameMenu">
-                    <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
-                    <NewGameButton setQuestion={props.setUserQuestion} setUserInput={props.setUserInput}/>
+                <div>
+                    <div className="gameMenu">
+                        <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
+                        <NewGameButton setQuestion={props.setUserQuestion} setUserInput={props.setUserInput}/>
+                    </div>
+                    <h2 className="counter">Score: {counter}/{props.userQuestion.length}</h2>
                 </div>
             }
+
+            {/* {
+                triviaResult === false ? (
+                <div className="popUpContainer">
+                    <div className="popUp">
+                        <p>No trivia found. Please try again with different selections.</p>
+                    </div>
+                </div>
+                ) : null
+            } */}
             
             <div className="triviaHidden">
                 {
@@ -97,6 +123,7 @@ const SelectTrivia = (props) => {
                         };
 
                         shuffledAnswers(allAnswers);
+                        console.log(key.correct_answer);
                         
                         return(
                             <DisplayTrivia
@@ -107,6 +134,8 @@ const SelectTrivia = (props) => {
                                 question={key.question}
                                 key={`key${i}`}
                                 questionNum={i}
+                                counter={() => counterSystem()}
+                                // totalQuestion={props.userQuestion}
                             />
                         )
                     })
