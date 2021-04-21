@@ -131,6 +131,7 @@ h1 {
     /* overflow: hidden; */
     padding-left: 10px;
     display: flex;
+    padding-bottom: 50px;
 }
 
 .pageChange {
@@ -338,7 +339,7 @@ select {
     border: 1px solid #AFEDFF;
     border-bottom: 5px solid #AFEDFF;
     display: block;
-    margin: 2% 0 0 auto;
+    margin: 5% 5% 0 auto;
 }
 
 .submitAnswer:hover,
