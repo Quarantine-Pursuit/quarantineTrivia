@@ -65,7 +65,7 @@ const SavedGames = (props) => {
                 confirmMessage ? (
                     <div className="popUpContainer">
                         <div className="popUp">
-                            <p>Would you like to load this game?</p>
+                            <p className="loadGameMessage">Would you like to load this game?</p>
                             <Link to="/">
                                 <button onClick={loadGame} className="affirm">Yes</button>
                             </Link>

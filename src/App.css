@@ -30,6 +30,7 @@ footer {
 }
 
 h1,
+h2,
 h3,
 p {
     margin: 0;
@@ -126,7 +127,7 @@ h1 {
 }
 
 .triviaHidden {
-    height: 400px;
+    height: auto;
     /* overflow: hidden; */
     padding-left: 10px;
     display: flex;
@@ -255,6 +256,10 @@ select {
     color: #000;
 }
 
+.counter {
+    margin: 30px 0 0 10px;
+}
+
 .popUpContainer {
     height: 100%;
     width: 100%;
@@ -299,13 +304,21 @@ select {
     margin-top: 40px;
 }
 
+.popUp .loadGameMessage,
+.popUp .newGameMessage {
+    margin-top: 0;
+}
+
 .questionBox {
     min-width: 100%;
 }
 
+.question {
+    margin-top: 20px;
+}
+
 .questionContainer {
-    margin-top: 50px;
-    padding-bottom: 20px;
+    margin: 30px 0;
 }
 
 .answerChoices {
@@ -325,7 +338,7 @@ select {
     border: 1px solid #AFEDFF;
     border-bottom: 5px solid #AFEDFF;
     display: block;
-    margin: 7% 0 0 auto;
+    margin: 2% 0 0 auto;
 }
 
 .submitAnswer:hover,
@@ -403,5 +416,11 @@ footer {
 }
 
 .teamAwesome {
-    margin: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+
+.teamAwesome i {
+    padding: 0 5px;
 }

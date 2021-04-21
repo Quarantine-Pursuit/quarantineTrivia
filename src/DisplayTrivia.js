@@ -5,7 +5,7 @@ const DisplayTrivia = (props) => {
     const [safeQuestion, setSafeQuestion] = useState('');
     const [safeAnswer, setSafeAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
-    
+    const [counter, setCounter] = useState(0);
 
     const userSubmit = (e) => {
         e.preventDefault();
@@ -29,6 +29,15 @@ const DisplayTrivia = (props) => {
         setUserChoice(e.target.value);
     }
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        // if (userChoice === props.correctAnswer) {
+            // setCounter(counter + 1);
+        // }
+    }
+
+    console.log(counter);
+
     useEffect( () => { 
         const placeholder = document.createElement('div');
         placeholder.innerHTML = props.question;
@@ -51,6 +60,7 @@ const DisplayTrivia = (props) => {
             <div className="questionContainer">
                 <h2>Question #{props.questionNum +1}</h2>
                 <p className="question">{safeQuestion}</p>
+                {/* <h2 className="counter">Score: {counter}/{props.totalQuestion.length}</h2> */}
             </div>
             {
                 props.incorrectAnswer.length === 1 ? (
@@ -58,16 +68,16 @@ const DisplayTrivia = (props) => {
                         <fieldset>
                             <div className="answerChoices">
                                 <div className="answer">
-                                    <input type="radio" name="trueFalse" id={`${props.questionNum}true`} value="true" onChange={handleChange}/>
+                                    <input type="radio" name="trueFalse" id={`${props.questionNum}true`} value="True" onChange={handleChange}/>
                                     <label htmlFor={`${props.questionNum}true`}>True</label>
                                 </div>
                     
                                 <div className="answer">
-                                    <input type="radio" name="trueFalse" id={`${props.questionNum}false`} value="false" onChange={handleChange}/>
+                                    <input type="radio" name="trueFalse" id={`${props.questionNum}false`} value="False" onChange={handleChange}/>
                                     <label htmlFor={`${props.questionNum}false`}>False</label>
                                 </div>
                             </div>
-                            <button type="submit" className="submitAnswer">Submit Answer</button>
+                            <button type="submit" className="submitAnswer" onClick={props.counter}>Submit Answer</button>
                         </fieldset>
                     </form>
                 ) : (
@@ -94,7 +104,7 @@ const DisplayTrivia = (props) => {
                                 <input type="radio" name="multipleChoice" id={`${props.questionNum}questionFour`} value={safeAnswer[3]} onChange={handleChange}/>
                                 <label htmlFor={`${props.questionNum}questionFour`}>{safeAnswer[3]}</label>
                             </div>
-                            <button type="submit" className="submitAnswer">Submit Answer</button>
+                            <button type="submit" className="submitAnswer" onClick={props.counter}>Submit Answer</button>
                         </fieldset>
                     </form>
                 )

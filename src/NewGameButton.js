@@ -32,7 +32,7 @@ const NewGameButton = (props) => {
                 newGameMessage ? (
                     <div className="popUpContainer">
                         <div className="popUp">
-                            <p>Would you like to start a new game?</p>
+                            <p className="newGameMessage">Would you like to start a new game?</p>
                             <button onClick={confirmClick} className="affirm">Yes</button>
                             <button onClick={closeClick}>No</button>
                         </div>
