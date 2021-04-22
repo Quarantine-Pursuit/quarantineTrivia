@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
-// Test
+// Displays the first question from the array and updates the index by 1 
 const DisplayTrivia = (props) => {
     const [userChoice, setUserChoice] = useState('');
     const [safeQuestion, setSafeQuestion] = useState('');
@@ -10,6 +10,7 @@ const DisplayTrivia = (props) => {
     const [answerCheck, setAnswerCheck] = useState();
     const [gameOver, setGameOver] = useState(false);
 
+    // Decodes unicode and shuffles the multiple choice array
     useEffect( () => { 
         const allAnswersArray = [];
         const incorrect = props.question.incorrectAnswer;
@@ -49,6 +50,7 @@ const DisplayTrivia = (props) => {
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
 
+    // submit function that checks userchoice to the answer, and updates the index to display next question
     const userSubmit = (e) => {
         e.preventDefault();
         if (userChoice === safeCorrectAnswer && props.index < props.numOfQuestion.length -1) {
@@ -72,12 +74,14 @@ const DisplayTrivia = (props) => {
         
     }
 
+    // function for when the user answers the last question
     const gameOverEffect = () => {
         setTimeout(() => {
             setGameOver(true)
         }, 3000)
     }
 
+    // pop up effect letting users know if they got the question wrong or right
     const popUpEffect = () => {
         setTimeout(() => {
             setAnswerCheck();
@@ -164,7 +168,9 @@ const DisplayTrivia = (props) => {
                         <div className="popUp">
                             <p className="endGame">You got {props.counter} out of {props.numOfQuestion.length} correct!</p>
                             <p>Would you like to play another game?</p>
-                            <button className="affirm endGame" onClick={() => props.confirm()}><Link to="/">Yes</Link></button>
+                            <button className="affirm endGame" onClick={() => props.confirm()}>
+                                <Link to="/">Yes</Link>
+                            </button>
                             <button>No</button>
                         </div>
                     </div>

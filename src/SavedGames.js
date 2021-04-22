@@ -9,6 +9,7 @@ const SavedGames = (props) => {
     const [confirmMessage, setConfirmMessage] = useState(false);
     const [selectedGame, setSelectedGame] = useState('');
 
+    //Gets data of saved games from firebase database
     useEffect(() => {
         const dbRef = firebase.database().ref();
         dbRef.on('value', (response) => {
@@ -22,10 +23,13 @@ const SavedGames = (props) => {
                     numOfQuestions: data[key].length
                 });
             };
+            // updates state with the array from database to be mapped
             setDisplaySaved(savedTrivia);
         });
     }, []);
 
+
+    // function to load the selected game from the list of saved games
     const loadGame = () => {
         const dbRef = firebase.database().ref(selectedGame);
         dbRef.on('value', (response) => {

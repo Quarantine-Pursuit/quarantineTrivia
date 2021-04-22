@@ -18,6 +18,7 @@ function App() {
   const [userQuestion, setUserQuestion] = useState([]);
   const [triviaResult, setTriviaResult] = useState('');
 
+  // API call function
   const getTrivia = () => {
     axios({
       url: `https://opentdb.com/api.php`,

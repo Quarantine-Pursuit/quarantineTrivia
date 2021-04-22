@@ -10,6 +10,8 @@ const SelectTrivia = (props) => {
     const [questions, setQuestions] = useState([]);
     const [index, setIndex] = useState(0);
 
+
+    // takes the data from API and takes the needed information and create a new object
     useEffect( () => {
         const newObj = props.userQuestion.map( (key) => {
             return ({
@@ -21,12 +23,14 @@ const SelectTrivia = (props) => {
         setQuestions(newObj);      
     }, [props.userQuestion]);
 
+    //when user clickes start new game, gets the API data from selected categories
     const handleSubmit = (e) => {
         e.preventDefault(e);
         props.getTrivia();
         setCounter(0);
     };
     
+    // get the value when user selects from given options
     const handleChange = (e) => {
         const value = e.target.value;
         props.setUserInput({
@@ -35,10 +39,12 @@ const SelectTrivia = (props) => {
         });
     };
 
+    // Updates the scoreboard for user
     const counterSystem = () => {
         setCounter(counter + 1);
     };
 
+    // click to reset the game (when new game is hit, or at the end of game)
     const confirmClick = () => {
         props.setUserQuestion([]);
         setIndex(0);

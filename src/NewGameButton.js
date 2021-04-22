@@ -5,12 +5,12 @@ const NewGameButton = (props) => {
 
     const [newGameMessage, setNewGameMessage] = useState(false);
 
+    // toggles the message asking if they want to start new game
     const newGame = () => {
         setNewGameMessage(true);
     };
 
-    
-
+    // closes message
     const closeClick = () => {
         setNewGameMessage(false);
     };
