@@ -166,6 +166,18 @@ const DisplayTrivia = (props) => {
                     </div>
                 ) : null
             }
+            {
+                gameOver === true ? (
+                    <div className="popUpContainer">
+                        <div className="popUp endGame">
+                            <p>You got {props.counter} out of {props.numOfQuestion.length} correct!</p>
+                            <button className="affirm" onClick={() => props.confirm()}>
+                                <Link to="/">Go back to starting screen.</Link>
+                            </button>
+                        </div>
+                    </div>
+                ) : null
+            }
         </div>
     );
 };
