@@ -326,6 +326,7 @@ select {
 
 .questionBox {
     min-width: 100%;
+    padding-left: 10px;
 }
 
 .question {

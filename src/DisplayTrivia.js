@@ -144,20 +144,18 @@ const DisplayTrivia = (props) => {
                 ) : null
             }
 
-            {
+            {/* {
                 gameOver === true ? (
                     <div className="popUpContainer">
                         <div className="popUp">
-                            <h2>You got {props.counter} out of {props.userQuestion.length} correct!</h2>
+                            <h2>You got {counter} out of {props.userQuestion.length} correct!</h2>
                             <h2>Would you like to play another game?</h2>
                             <button>Yes</button>
                             <button>No</button>
                         </div>
                     </div>
                 ) : null
-            }
-
-
+            } */}
         </div>
     )
     }
