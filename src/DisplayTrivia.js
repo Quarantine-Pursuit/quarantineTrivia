@@ -4,8 +4,9 @@ const DisplayTrivia = (props) => {
     const [userChoice, setUserChoice] = useState('');
     const [safeQuestion, setSafeQuestion] = useState('');
     const [safeAnswer, setSafeAnswer] = useState('');
+    const [safeCorrectAnswer, setSafeCorrectAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
-
+    
     useEffect( () => { 
         const allAnswersArray = [];
         const incorrect = props.question.incorrectAnswer;
@@ -27,6 +28,10 @@ const DisplayTrivia = (props) => {
         placeholder.innerHTML = props.question.question;
         const safeQuestion = placeholder.textContent;
 
+        const correctPlaceholder = document.createElement('div');
+        correctPlaceholder.innerHTML = props.question.correctAnswer;
+        const safeCorrectAnswer = correctPlaceholder.textContent;
+
         const newShuffleAnswer = allAnswersArray.map((array) => {
             const placeholderTwo = document.createElement('div');
             placeholderTwo.innerHTML = array;
@@ -35,12 +40,13 @@ const DisplayTrivia = (props) => {
         });
         setSafeQuestion(safeQuestion);
         setSafeAnswer(newShuffleAnswer);
+        setSafeCorrectAnswer(safeCorrectAnswer);
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
 
     const userSubmit = (e) => {
         e.preventDefault();
-        if (userChoice === props.question.correctAnswer) {
+        if (userChoice === safeCorrectAnswer) {
             setAnswerCheck(true);
             popUpEffect();
             props.counterSystem();
