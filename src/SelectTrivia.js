@@ -41,7 +41,7 @@ const SelectTrivia = (props) => {
 
     const confirmClick = () => {
         props.setUserQuestion([]);
-        props.setIndex(0);
+        setIndex(0);
         props.setUserInput({
             categories: "placeholder",
             questionNum: "placeholder",
@@ -105,7 +105,7 @@ const SelectTrivia = (props) => {
                 <div>
                     <div className="gameMenu">
                         <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
-                        <NewGameButton setUserQuestion={props.setUserQuestion} setUserInput={props.setUserInput} setIndex={setIndex}/>
+                        <NewGameButton setUserQuestion={props.setUserQuestion} setUserInput={props.setUserInput} confirm={confirmClick}/>
                     </div>
                     <h2 className="counter">Score: {counter}/{props.userQuestion.length}</h2>
                 </div>
@@ -118,7 +118,8 @@ const SelectTrivia = (props) => {
                 setIndex={setIndex}
                 index={index} 
                 numOfQuestion={questions}
-                counter={counter}/> : null
+                counter={counter}
+                confirm={confirmClick}/> : null
                 
             }
 

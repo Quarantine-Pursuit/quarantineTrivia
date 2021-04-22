@@ -159,9 +159,9 @@ const DisplayTrivia = (props) => {
                 gameOver === true ? (
                     <div className="popUpContainer">
                         <div className="popUp">
-                            <p>You got {props.counter} out of {props.numOfQuestion.length} correct!</p>
+                            <p className="endGame">You got {props.counter} out of {props.numOfQuestion.length} correct!</p>
                             <p>Would you like to play another game?</p>
-                            <button className="affirm" onClick={confirmClick}><Link to="/">Yes</Link></button>
+                            <button className="affirm endGame" onClick={() => props.confirm()}><Link to="/">Yes</Link></button>
                             <button>No</button>
                         </div>
                     </div>

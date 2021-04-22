@@ -311,12 +311,24 @@ select {
 }
 
 .popUp .affirm a:hover,
-.popUp .affirm a:focus {
+.popUp .affirm a:focus  {
     color: #9BD694;
+}
+
+.popUp .endGame {
+    margin: 0;
 }
 
 .popUp p {
     margin-top: 50px;
+}
+
+.popUp .endGame p {
+    margin-top: 0;
+}
+
+.popUp .endGame button {
+    margin: 0;
 }
 
 .popUp h2 {
