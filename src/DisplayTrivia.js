@@ -1,12 +1,10 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 const DisplayTrivia = (props) => {
     const [userChoice, setUserChoice] = useState('');
     const [safeQuestion, setSafeQuestion] = useState('');
     const [safeAnswer, setSafeAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
-
-        
 
     useEffect( () => { 
         const allAnswersArray = [];
@@ -22,7 +20,7 @@ const DisplayTrivia = (props) => {
                  array[currentIndex] = array[randomIndex];
                  array[randomIndex] = temporaryValue;
             };
-        }
+        };
         shuffledAnswers(allAnswersArray);
 
         const placeholder = document.createElement('div');
@@ -39,7 +37,6 @@ const DisplayTrivia = (props) => {
         setSafeAnswer(newShuffleAnswer);
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
-    console.log(props.question.correctAnswer)
 
     const userSubmit = (e) => {
         e.preventDefault();
@@ -50,19 +47,20 @@ const DisplayTrivia = (props) => {
         }else {
             setAnswerCheck(false);
             popUpEffect();
-        }
+        };
         props.setIndex(props.index + 1);
-    }
+    };
 
     const popUpEffect = () => {
         setTimeout(() => {
             setAnswerCheck(undefined);
         }, 2000);
-    }
+    };
 
     const handleChange = (e) => {
         setUserChoice(e.target.value);
-    }
+    };
+
     return (
         <div className="questionBox">
             <div className="questionContainer">
@@ -133,7 +131,7 @@ const DisplayTrivia = (props) => {
                 ) : null
             }
         </div>
-    )
-    }
+    );
+};
 
 export default DisplayTrivia;

@@ -6,26 +6,20 @@ import NewGameButton from './NewGameButton.js';
 
 const SelectTrivia = (props) => {
 
-    // const [triviaResult, setTriviaResult] = useState(null);
     const [counter, setCounter] = useState(0);
     const [questions, setQuestions] = useState([]);
-    const [index, setIndex] = useState(0)
+    const [index, setIndex] = useState(0);
 
-    
-    
     useEffect( () => {
         const newObj = props.userQuestion.map( (key) => {
             return ({
                 question: key.question,
                 correctAnswer: key.correct_answer,
                 incorrectAnswer: key.incorrect_answers
-            })
-        })
-        setQuestions(newObj)       
-    }, [props.userQuestion])
-
-
-
+            });
+        });
+        setQuestions(newObj);      
+    }, [props.userQuestion]);
 
     const handleSubmit = (e) => {
         e.preventDefault(e);
@@ -37,14 +31,12 @@ const SelectTrivia = (props) => {
         props.setUserInput({
             ...props.userInput,
             [e.target.name]: value
-        })
+        });
     };
 
     const counterSystem = () => {
         setCounter(counter + 1);
-    }
-
-    
+    };
 
     return(
         <section className="triviaContainer">
@@ -107,27 +99,17 @@ const SelectTrivia = (props) => {
                 </div>
             }
 
-            {/* {
-                triviaResult === false ? (
-                <div className="popUpContainer">
-                    <div className="popUp">
-                        <p>No trivia found. Please try again with different selections.</p>
-                    </div>
-                </div>
-                ) : null
-            } */}
-            
             <div className="triviaHidden">
-            {
-                questions.length > 0 ? <DisplayTrivia 
-                counterSystem={counterSystem}
-                question={questions[`${index}`]}
-                setIndex={setIndex}
-                index={index} /> : null
-            }
+                {
+                    questions.length > 0 ? <DisplayTrivia 
+                    counterSystem={counterSystem}
+                    question={questions[`${index}`]}
+                    setIndex={setIndex}
+                    index={index} /> : null
+                }
             </div>
         </section>
-    )
-}
+    );
+};
 
 export default SelectTrivia;
