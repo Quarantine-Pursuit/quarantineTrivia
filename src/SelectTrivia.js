@@ -102,16 +102,6 @@ const SelectTrivia = (props) => {
             }
 
             {
-                triviaResult === false ? (
-                <div className="popUpContainer">
-                    <div className="popUp">
-                        <p>No trivia found. Please try again with different selections.</p>
-                    </div>
-                </div>
-                ) : null
-            }
-            
-            {
                 questions.length > 0 ? <DisplayTrivia 
                 counterSystem={counterSystem}
                 question={questions[`${index}`]}
