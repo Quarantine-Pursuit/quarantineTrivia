@@ -487,6 +487,97 @@ footer {
     }
 }
 
+@media (max-width: 800px) {
+    .triviaContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .startGame {
+        margin-top: 50px;
+        height: 90px;
+        padding: 10px;
+    }
+
+    .select {
+        padding: 40px;
+    }
+    
+    .triviaOptions {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 590px) {
+    .triviaContainer {
+        height: 600px;
+        justify-content: space-evenly;
+        padding-top: 0;
+        flex-direction: column;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .teamAwesome {
+        list-style-type: none;
+        flex-wrap: wrap;
+    }
+
+    li, 
+    p {
+        list-style-type: none;
+        margin: 5px;
+    }
+
+    .triviaContainer::before {
+        content: none;
+    }
+
+    .gameNav {
+        min-width: 100%;
+    }
+
+    .questionBox {
+        padding-left: 0;
+    }
+
+    .gameMenu,
+    .counter {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .questionContainer {
+        margin-top: 0;
+    }
+
+    .submitAnswer {
+        margin: 30px auto 0;
+
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 564px) {
+    .questionNum,
+    .difficulty {
+        width: 230px;
+    }
+
+    .triviaOptions select {
+        margin-top: 10px;
+    }
+}
 
 @media (max-width: 520px) {
     .popUp {
@@ -505,9 +596,54 @@ footer {
         margin: 45px 0 0 0;
         padding: 0 20px;
     }
+
+    .popUp {
+        margin-top: 50px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
 }
 
-@media (max-width: 360px) {
+
+
+@media (max-width: 400px) {
+    h2 {
+        font-size: 1.15rem;
+    }
+
+    .question {
+        font-size: 0.8rem;
+    }
+
+    .gameMenu {
+        flex-direction: column;
+    }
+
+    .saveGame {
+        margin-right: 0;
+    }
+
+    .newGame {
+        margin-top: 20px;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+}
+
+@media (max-width: 370px) {
+    .triviaContainer {
+        padding: 0 20px 20px;
+    }
+
     .popUp {
         height: 200px;
         padding: 55px 30px 30px 30px;
@@ -530,30 +666,6 @@ footer {
     }
 }
 
-@media (max-height: 500px) {
-    .popUp {
-        margin-top: 50px;
-    }
-}
 
-@media (max-width: 360px) {
-    
-    .triviaContainer {
-        height: 700px;
-        padding: 10px;
-        margin: 0 auto;
-    }
 
-    .triviaContainer .pageChange {
-        left: 50px;
-    }
 
-    .questionContainer {
-        margin-bottom: 30px;
-    }
-
-    .submitAnswer {
-        display: flex;
-        margin: 10% auto;
-    }
-}
