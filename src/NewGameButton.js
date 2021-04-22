@@ -5,34 +5,25 @@ const NewGameButton = (props) => {
 
     const [newGameMessage, setNewGameMessage] = useState(false);
 
+    // toggles the message asking if they want to start new game
     const newGame = () => {
         setNewGameMessage(true);
     };
 
-    const confirmClick = () => {
-        props.setUserQuestion([]);
-        props.setIndex(0);
-        props.setUserInput({
-            categories: "placeholder",
-            questionNum: "placeholder",
-            difficulty: "placeholder",
-            type: "placeholder"
-        });
-    };
-
+    // closes message
     const closeClick = () => {
         setNewGameMessage(false);
     };
 
     return(
-        <div>
+        <>
             <button onClick={newGame} className="newGame">New Game</button>
             {
                 newGameMessage ? (
                     <div className="popUpContainer">
                         <div className="popUp">
                             <p className="newGameMessage">Would you like to start a new game?</p>
-                            <button onClick={confirmClick} className="affirm">
+                            <button onClick={() => props.confirm()} className="affirm">
                                 <Link to="/">Yes</Link>
                             </button>
                             <button onClick={closeClick}>No</button>
@@ -40,7 +31,7 @@ const NewGameButton = (props) => {
                     </div>
                 ) : null
             }
-        </div>
+        </>
     );
 };
 

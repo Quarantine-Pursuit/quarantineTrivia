@@ -10,6 +10,8 @@ const SelectTrivia = (props) => {
     const [questions, setQuestions] = useState([]);
     const [index, setIndex] = useState(0);
 
+
+    // takes the data from API and takes the needed information and create a new object
     useEffect( () => {
         const newObj = props.userQuestion.map( (key) => {
             return ({
@@ -21,13 +23,14 @@ const SelectTrivia = (props) => {
         setQuestions(newObj);      
     }, [props.userQuestion]);
 
-
+    //when user clickes start new game, gets the API data from selected categories
     const handleSubmit = (e) => {
         e.preventDefault(e);
         props.getTrivia();
         setCounter(0);
     };
     
+    // get the value when user selects from given options
     const handleChange = (e) => {
         const value = e.target.value;
         props.setUserInput({
@@ -36,9 +39,22 @@ const SelectTrivia = (props) => {
         });
     };
 
+    // Updates the scoreboard for user
     const counterSystem = () => {
         setCounter(counter + 1);
     };
+
+    // click to reset the game (when new game is hit, or at the end of game)
+    const confirmClick = () => {
+        props.setUserQuestion([]);
+        setIndex(0);
+        props.setUserInput({
+            categories: "placeholder",
+            questionNum: "placeholder",
+            difficulty: "placeholder",
+            type: "placeholder"
+        });
+    }
 
     return(
         <section className="triviaContainer">
@@ -92,10 +108,10 @@ const SelectTrivia = (props) => {
 
             {
                 props.userQuestion.length === 0 ? null :
-                <div>
+                <div className="gameNav">
                     <div className="gameMenu">
                         <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
-                        <NewGameButton setUserQuestion={props.setUserQuestion} setUserInput={props.setUserInput} setIndex={setIndex}/>
+                        <NewGameButton setUserQuestion={props.setUserQuestion} setUserInput={props.setUserInput} confirm={confirmClick}/>
                     </div>
                     <h2 className="counter">Score: {counter}/{props.userQuestion.length}</h2>
                 </div>
@@ -107,7 +123,10 @@ const SelectTrivia = (props) => {
                 question={questions[`${index}`]}
                 setIndex={setIndex}
                 index={index} 
-                numOfQuestion={questions}/> : null
+                numOfQuestion={questions}
+                counter={counter}
+                confirm={confirmClick}/> : null
+                
             }
 
         </section>

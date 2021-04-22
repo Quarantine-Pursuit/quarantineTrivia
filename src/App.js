@@ -6,7 +6,7 @@ import SavedGames from './SavedGames.js';
 import SelectTrivia from './SelectTrivia.js';
 import Footer from './Footer.js';
 
-
+// production branch.
 function App() {
   const [userInput, setUserInput] = useState({
     categories: "placeholder",
@@ -18,6 +18,7 @@ function App() {
   const [userQuestion, setUserQuestion] = useState([]);
   const [triviaResult, setTriviaResult] = useState('');
 
+  // API call function
   const getTrivia = () => {
     axios({
       url: `https://opentdb.com/api.php`,

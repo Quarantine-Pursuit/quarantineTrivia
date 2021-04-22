@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 
+// Displays the first question from the array and updates the index by 1 
 const DisplayTrivia = (props) => {
     const [userChoice, setUserChoice] = useState('');
     const [safeQuestion, setSafeQuestion] = useState('');
@@ -7,13 +9,14 @@ const DisplayTrivia = (props) => {
     const [safeCorrectAnswer, setSafeCorrectAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
     const [check, setCheck] = useState('resetAll');
+    const [gameOver, setGameOver] = useState(false);
 
+    // Decodes unicode and shuffles the multiple choice array
     useEffect( () => { 
         const allAnswersArray = [];
-        const correct = props.question.correctAnswer;
         const incorrect = props.question.incorrectAnswer;
         allAnswersArray.push(incorrect[0], incorrect[1], incorrect[2]);
-        allAnswersArray.push(correct);
+        allAnswersArray.push(props.question.correctAnswer);
         const shuffledAnswers = (array) => {
         let currentIndex = array.length, temporaryValue, randomIndex;
             while (currentIndex !== 0) {
@@ -46,25 +49,31 @@ const DisplayTrivia = (props) => {
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
 
-
+    // submit function that checks userchoice to the answer, and updates the index to display next question
     const userSubmit = (e) => {
         e.preventDefault();
-        if (userChoice === safeCorrectAnswer) {
+        if (userChoice === safeCorrectAnswer && props.index < props.numOfQuestion.length -1) {
             setAnswerCheck(true);
             popUpEffect();
             props.counterSystem();
-        }else {
+            props.setIndex(props.index + 1);
+        } else if (props.index === props.numOfQuestion.length - 1 && userChoice === safeCorrectAnswer) {
+            setGameOver(true);
+            props.counterSystem();
+        } else if (props.index === props.numOfQuestion.length - 1 && userChoice !== safeCorrectAnswer){
+            setGameOver(true);
+        } else {
             setAnswerCheck(false);
             popUpEffect();
+            props.setIndex(props.index + 1);
         };
-        props.setIndex(props.index + 1);
-        setCheck('resetAll')
+        setCheck('resetAll');
     }
 
-
+    // pop up effect letting users know if they got the question wrong or right
     const popUpEffect = () => {
         setTimeout(() => {
-            setAnswerCheck(undefined);
+            setAnswerCheck();
         }, 2000);
     };
 
@@ -84,12 +93,24 @@ const DisplayTrivia = (props) => {
                         <fieldset>
                             <div className="answerChoices">
                                 <div className="answer">
-                                    <input type="radio" name="trueFalse" id="true" value="True" onChange={handleChange} required/>
+                                    <input type="radio" 
+                                    name="trueFalse" 
+                                    id="true" 
+                                    value="True" 
+                                    onChange={handleChange} 
+                                    checked={check==='true'} 
+                                    onClick={() => setCheck('true')}
+                                    required/>
                                     <label htmlFor="true">True</label>
                                 </div>
-                    
                                 <div className="answer">
-                                    <input type="radio" name="trueFalse" id="false" value="False" onChange={handleChange}/>
+                                    <input type="radio" 
+                                    name="trueFalse" 
+                                    id="false" 
+                                    value="False" 
+                                    onChange={handleChange}
+                                    checked={check==='false'} 
+                                    onClick={() => setCheck('false')}/>
                                     <label htmlFor="false">False</label>
                                 </div>
                             </div>
@@ -111,7 +132,6 @@ const DisplayTrivia = (props) => {
                                     required/>
                                     <label htmlFor="answerOne">{safeAnswer[0]}</label>
                                 </div>
-                                
                                 <div className="answer">
                                     <input type="radio" 
                                     name="multipleChoice" 
@@ -122,7 +142,6 @@ const DisplayTrivia = (props) => {
                                     onClick={() => setCheck(safeAnswer[1])}/>
                                     <label htmlFor="answerTwo">{safeAnswer[1]}</label>
                                 </div>
-
                                 <div className="answer">
                                     <input type="radio" 
                                     name="multipleChoice" 
@@ -134,7 +153,6 @@ const DisplayTrivia = (props) => {
                                     <label htmlFor="answerThree">{safeAnswer[2]}</label>
                                 </div>
                             </div>
-
                             <div className="answer">
                                 <input type="radio" 
                                 name="multipleChoice" 
@@ -150,7 +168,6 @@ const DisplayTrivia = (props) => {
                     </form>
                 )
             }
-
             {
                 answerCheck === true ? (
                     <div className="popUpContainer">
