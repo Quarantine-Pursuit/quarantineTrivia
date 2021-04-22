@@ -46,8 +46,6 @@ const DisplayTrivia = (props) => {
         setSafeQuestion(safeQuestion);
         setSafeAnswer(newShuffleAnswer);
         setSafeCorrectAnswer(safeCorrectAnswer);
-        console.log(safeCorrectAnswer)
-
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
 
