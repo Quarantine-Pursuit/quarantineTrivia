@@ -8,6 +8,7 @@ const DisplayTrivia = (props) => {
     const [safeAnswer, setSafeAnswer] = useState('');
     const [safeCorrectAnswer, setSafeCorrectAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
+    const [check, setCheck] = useState('resetAll');
     const [gameOver, setGameOver] = useState(false);
 
     // Decodes unicode and shuffles the multiple choice array
@@ -44,8 +45,8 @@ const DisplayTrivia = (props) => {
         });
         setSafeQuestion(safeQuestion);
         setSafeAnswer(newShuffleAnswer);
-
         setSafeCorrectAnswer(safeCorrectAnswer);
+        console.log(safeCorrectAnswer)
 
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
@@ -60,25 +61,15 @@ const DisplayTrivia = (props) => {
             props.setIndex(props.index + 1);
         } else if (props.index === props.numOfQuestion.length - 1 && userChoice === safeCorrectAnswer) {
             setGameOver(true);
-            gameOverEffect();
             props.counterSystem();
-
-        } else if (props.index === props.numOfQuestion.length - 1 && !userChoice){
+        } else if (props.index === props.numOfQuestion.length - 1 && userChoice !== safeCorrectAnswer){
             setGameOver(true);
-            gameOverEffect();
         } else {
             setAnswerCheck(false);
             popUpEffect();
             props.setIndex(props.index + 1);
         };
-        
-    }
-
-    // function for when the user answers the last question
-    const gameOverEffect = () => {
-        setTimeout(() => {
-            setGameOver(true)
-        }, 3000)
+        setCheck('resetAll');
     }
 
     // pop up effect letting users know if they got the question wrong or right
@@ -104,12 +95,24 @@ const DisplayTrivia = (props) => {
                         <fieldset>
                             <div className="answerChoices">
                                 <div className="answer">
-                                    <input type="radio" name="trueFalse" id="true" value="True" onChange={handleChange} required/>
+                                    <input type="radio" 
+                                    name="trueFalse" 
+                                    id="true" 
+                                    value="True" 
+                                    onChange={handleChange} 
+                                    checked={check==='true'} 
+                                    onClick={() => setCheck('true')}
+                                    required/>
                                     <label htmlFor="true">True</label>
                                 </div>
-                    
                                 <div className="answer">
-                                    <input type="radio" name="trueFalse" id="false" value="False" onChange={handleChange}/>
+                                    <input type="radio" 
+                                    name="trueFalse" 
+                                    id="false" 
+                                    value="False" 
+                                    onChange={handleChange}
+                                    checked={check==='false'} 
+                                    onClick={() => setCheck('false')}/>
                                     <label htmlFor="false">False</label>
                                 </div>
                             </div>
@@ -121,23 +124,45 @@ const DisplayTrivia = (props) => {
                         <fieldset>
                             <div className="answerChoices">
                                 <div className="answer">
-                                    <input type="radio" name="multipleChoice" id="answerOne" value={safeAnswer[0]} onChange={handleChange}  required/>
+                                    <input type="radio" 
+                                    name="multipleChoice" 
+                                    id="answerOne" 
+                                    value={safeAnswer[0]} 
+                                    onChange={handleChange} 
+                                    checked={check===safeAnswer[0]} 
+                                    onClick={() => setCheck(safeAnswer[0])}
+                                    required/>
                                     <label htmlFor="answerOne">{safeAnswer[0]}</label>
                                 </div>
-                                
                                 <div className="answer">
-                                    <input type="radio" name="multipleChoice" id="answerTwo" value={safeAnswer[1]} onChange={handleChange}/>
+                                    <input type="radio" 
+                                    name="multipleChoice" 
+                                    id="answerTwo" 
+                                    value={safeAnswer[1]} 
+                                    onChange={handleChange} 
+                                    checked={check===safeAnswer[1]} 
+                                    onClick={() => setCheck(safeAnswer[1])}/>
                                     <label htmlFor="answerTwo">{safeAnswer[1]}</label>
                                 </div>
-
                                 <div className="answer">
-                                    <input type="radio" name="multipleChoice" id="answerThree" value={safeAnswer[2]} onChange={handleChange}/>
+                                    <input type="radio" 
+                                    name="multipleChoice" 
+                                    id="answerThree" 
+                                    value={safeAnswer[2]} 
+                                    onChange={handleChange} 
+                                    checked={check===safeAnswer[2]} 
+                                    onClick={() => setCheck(safeAnswer[2])}/>
                                     <label htmlFor="answerThree">{safeAnswer[2]}</label>
                                 </div>
                             </div>
-
                             <div className="answer">
-                                <input type="radio" name="multipleChoice" id="answerFour" value={safeAnswer[3]} onChange={handleChange}/>
+                                <input type="radio" 
+                                name="multipleChoice" 
+                                id="answerFour" 
+                                value={safeAnswer[3]} 
+                                onChange={handleChange} 
+                                checked={check===safeAnswer[3]} 
+                                onClick={() => setCheck(safeAnswer[3])}/>
                                 <label htmlFor="answerFour">{safeAnswer[3]}</label>
                             </div>
                             <button type="submit" className="submitAnswer">Submit Answer</button>
@@ -145,7 +170,6 @@ const DisplayTrivia = (props) => {
                     </form>
                 )
             }
-
             {
                 answerCheck === true ? (
                     <div className="popUpContainer">
@@ -161,17 +185,14 @@ const DisplayTrivia = (props) => {
                     </div>
                 ) : null
             }
-
             {
                 gameOver === true ? (
                     <div className="popUpContainer">
                         <div className="popUp">
                             <p className="endGame">You got {props.counter} out of {props.numOfQuestion.length} correct!</p>
-                            <p>Would you like to play another game?</p>
                             <button className="affirm endGame" onClick={() => props.confirm()}>
-                                <Link to="/">Yes</Link>
+                                <Link to="/">Go back to starting screen.</Link>
                             </button>
-                            <button>No</button>
                         </div>
                     </div>
                 ) : null

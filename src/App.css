@@ -442,3 +442,50 @@ footer {
 .teamAwesome i {
     padding: 0 5px;
 }
+
+@media (max-width: 800px) {
+    .triviaContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .startGame {
+        margin-top: 50px;
+        height: 90px;
+        padding: 10px;
+    }
+    .select {
+        padding: 40px;
+    }
+    
+    .triviaOptions {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 400px) {
+
+ .triviaOptions {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+    @media (max-width: 300px) {
+    
+     .triviaOptions {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;   
+        }
+        .startGame {
+            margin-top: 50px;
+            padding: 10px;
+        }
+        .button {
+            height: 40px;
+        }
+    }
