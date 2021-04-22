@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 
 const DisplayTrivia = (props) => {
     const [userChoice, setUserChoice] = useState('');
     const [safeQuestion, setSafeQuestion] = useState('');
     const [safeAnswer, setSafeAnswer] = useState('');
+    const [safeCorrectAnswer, setSafeCorrectAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
     const [gameOver, setGameOver] = useState(false);
-
-        
 
     useEffect( () => { 
         const allAnswersArray = [];
@@ -23,12 +23,16 @@ const DisplayTrivia = (props) => {
                  array[currentIndex] = array[randomIndex];
                  array[randomIndex] = temporaryValue;
             };
-        }
+        };
         shuffledAnswers(allAnswersArray);
 
         const placeholder = document.createElement('div');
         placeholder.innerHTML = props.question.question;
         const safeQuestion = placeholder.textContent;
+
+        const correctPlaceholder = document.createElement('div');
+        correctPlaceholder.innerHTML = props.question.correctAnswer;
+        const safeCorrectAnswer = correctPlaceholder.textContent;
 
         const newShuffleAnswer = allAnswersArray.map((array) => {
             const placeholderTwo = document.createElement('div');
@@ -38,26 +42,31 @@ const DisplayTrivia = (props) => {
         });
         setSafeQuestion(safeQuestion);
         setSafeAnswer(newShuffleAnswer);
-        
+        setSafeCorrectAnswer(safeCorrectAnswer);
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
 
     const userSubmit = (e) => {
         e.preventDefault();
-        if (userChoice === props.question.correctAnswer) {
+        if (userChoice === safeCorrectAnswer && props.index < props.numOfQuestion.length -1) {
             setAnswerCheck(true);
             popUpEffect();
             props.counterSystem();
-        } else if (props.index < props.numOfQuestion.length) {
-            console.log(props);
+            props.setIndex(props.index + 1);
+        } else if (props.index === props.numOfQuestion.length - 1 && userChoice === safeCorrectAnswer) {
             setGameOver(true);
             gameOverEffect();
-           
+            props.counterSystem();
+
+        } else if (props.index === props.numOfQuestion.length - 1 && !userChoice){
+            setGameOver(true);
+            gameOverEffect();
         } else {
             setAnswerCheck(false);
             popUpEffect();
-        }
-        props.setIndex(props.index + 1);
+            props.setIndex(props.index + 1);
+        };
+        
     }
 
     const gameOverEffect = () => {
@@ -65,15 +74,17 @@ const DisplayTrivia = (props) => {
             setGameOver(true)
         }, 3000)
     }
+
     const popUpEffect = () => {
         setTimeout(() => {
             setAnswerCheck();
         }, 2000);
-    }
+    };
 
     const handleChange = (e) => {
         setUserChoice(e.target.value);
-    }
+    };
+
     return (
         <div className="questionBox">
             <div className="questionContainer">
@@ -144,20 +155,20 @@ const DisplayTrivia = (props) => {
                 ) : null
             }
 
-            {/* {
+            {
                 gameOver === true ? (
                     <div className="popUpContainer">
                         <div className="popUp">
-                            <h2>You got {counter} out of {props.userQuestion.length} correct!</h2>
-                            <h2>Would you like to play another game?</h2>
-                            <button>Yes</button>
+                            <p>You got {props.counter} out of {props.numOfQuestion.length} correct!</p>
+                            <p>Would you like to play another game?</p>
+                            <button className="affirm" onClick={confirmClick}><Link to="/">Yes</Link></button>
                             <button>No</button>
                         </div>
                     </div>
                 ) : null
-            } */}
+            }
         </div>
-    )
-    }
+    );
+};
 
 export default DisplayTrivia;

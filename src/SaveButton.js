@@ -1,5 +1,5 @@
 import firebase from './firebase.js';
-import { useState } from 'react';
+import {useState} from 'react';
 
 
 const SaveButton = (props) => {
@@ -11,7 +11,7 @@ const SaveButton = (props) => {
         setTimeout(() => {
             setSaveGame(false);
         }, 2000);
-    }
+    };
 
     return(
         <>
@@ -26,7 +26,7 @@ const SaveButton = (props) => {
                 ) : null
             }
         </>
-    )
-}
+    );
+};
 
 export default SaveButton;

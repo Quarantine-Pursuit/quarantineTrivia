@@ -306,8 +306,12 @@ select {
     color: #FFB0C6;
 }
 
-.popUp .affirm:hover,
-.popUp .affirm:focus {
+.affirm a {
+    color: #FFF;
+}
+
+.popUp .affirm a:hover,
+.popUp .affirm a:focus {
     color: #9BD694;
 }
 
