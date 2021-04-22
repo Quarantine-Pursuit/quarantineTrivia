@@ -1,9 +1,9 @@
 import './App.css';
 import axios from 'axios';
-import { useState } from 'react';
+import {useState} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import SavedGames from './SavedGames.js';
-import SelectTrivia from './SelectTrivia';
+import SelectTrivia from './SelectTrivia.js';
 import Footer from './Footer.js';
 
 
@@ -16,6 +16,7 @@ function App() {
   });
 
   const [userQuestion, setUserQuestion] = useState([]);
+  const [triviaResult, setTriviaResult] = useState('');
 
   const getTrivia = () => {
     axios({
@@ -30,7 +31,20 @@ function App() {
       }
     }).then( (response) => {
       setUserQuestion(response.data.results);
-    })
+      if (response.data.results.length !== 0) {
+        setTriviaResult(undefined);
+        popUpEffect();
+      } else {
+        setTriviaResult(true);
+        popUpEffect();
+      };
+    });
+  };
+
+  const popUpEffect = () => {
+    setTimeout(() => {
+      setTriviaResult(undefined);
+    }, 3000);
   };
   
   return (
@@ -51,17 +65,28 @@ function App() {
               setUserInput={setUserInput}
             />
           }/>
+
           <Route exact path="/savedGames" render={() =>
             <SavedGames setUserQuestion={setUserQuestion}/>
           }/>
         </div>
 
+        {
+          triviaResult === true ? (
+            <div className="popUpContainer">
+              <div className="popUp">
+                <p>No trivia found. Please try again with different selections.</p>
+              </div>
+            </div>
+          ) : null
+        }
+
         <Footer />
-        
+      
       </div>
     </Router>
   );
-}
+};
 
 export default App;
 

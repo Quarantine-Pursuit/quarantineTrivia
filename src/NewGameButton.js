@@ -7,7 +7,7 @@ const NewGameButton = (props) => {
 
     const newGame = () => {
         setNewGameMessage(true);
-    }
+    };
 
     const confirmClick = () => {
         props.setUserQuestion([]);
@@ -18,11 +18,11 @@ const NewGameButton = (props) => {
             difficulty: "placeholder",
             type: "placeholder"
         });
-    }
+    };
 
     const closeClick = () => {
         setNewGameMessage(false);
-    }
+    };
 
     return(
         <div>
@@ -41,7 +41,7 @@ const NewGameButton = (props) => {
                 ) : null
             }
         </div>
-    )
-}
+    );
+};
 
 export default NewGameButton;
