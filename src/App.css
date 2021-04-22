@@ -444,12 +444,7 @@ footer {
 }
 
 @media (max-width: 800px) {
-    .triviaContainer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-    }
+    
     .startGame {
         margin-top: 50px;
         height: 90px;
@@ -464,28 +459,24 @@ footer {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 360px) {
+    
+    .triviaContainer {
+        height: 700px;
+        padding: 10px;
+        margin: 0 auto;
+    }
 
- .triviaOptions {
+    .triviaContainer .pageChange {
+        left: 50px;
+    }
+
+    .questionContainer {
+        margin-bottom: 30px;
+    }
+
+    .submitAnswer {
         display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: center;
+        margin: 10% auto;
     }
 }
-    @media (max-width: 300px) {
-    
-     .triviaOptions {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            justify-content: center;   
-        }
-        .startGame {
-            margin-top: 50px;
-            padding: 10px;
-        }
-        .button {
-            height: 40px;
-        }
-    }
