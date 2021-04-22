@@ -38,6 +38,7 @@ const DisplayTrivia = (props) => {
         });
         setSafeQuestion(safeQuestion);
         setSafeAnswer(newShuffleAnswer);
+        
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
 
@@ -47,30 +48,26 @@ const DisplayTrivia = (props) => {
             setAnswerCheck(true);
             popUpEffect();
             props.counterSystem();
-        }else {
+        } else if (props.index < props.numOfQuestion.length) {
+            console.log(props);
+            setGameOver(true);
+            gameOverEffect();
+           
+        } else {
             setAnswerCheck(false);
             popUpEffect();
         }
         props.setIndex(props.index + 1);
-
-        if (props.index >= props.question.question.length) {
-            console.log(props);
-            setGameOver(true);
-            gameOverEffect();
-        } else {
-            setGameOver(false);
-        }
     }
 
     const gameOverEffect = () => {
         setTimeout(() => {
-            
-        })
+            setGameOver(true)
+        }, 3000)
     }
-
     const popUpEffect = () => {
         setTimeout(() => {
-            setAnswerCheck(undefined);
+            setAnswerCheck();
         }, 2000);
     }
 
@@ -151,7 +148,7 @@ const DisplayTrivia = (props) => {
                 gameOver === true ? (
                     <div className="popUpContainer">
                         <div className="popUp">
-                            <h2>You got {counter} out of {props.userQuestion.length} correct!</h2>
+                            <h2>You got {props.counter} out of {props.userQuestion.length} correct!</h2>
                             <h2>Would you like to play another game?</h2>
                             <button>Yes</button>
                             <button>No</button>

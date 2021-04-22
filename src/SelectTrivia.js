@@ -11,8 +11,6 @@ const SelectTrivia = (props) => {
     const [questions, setQuestions] = useState([]);
     const [index, setIndex] = useState(0)
 
-    
-    
     useEffect( () => {
         const newObj = props.userQuestion.map( (key) => {
             return ({
@@ -23,9 +21,6 @@ const SelectTrivia = (props) => {
         })
         setQuestions(newObj)       
     }, [props.userQuestion])
-
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault(e);
@@ -43,8 +38,6 @@ const SelectTrivia = (props) => {
     const counterSystem = () => {
         setCounter(counter + 1);
     }
-
-    
 
     return(
         <section className="triviaContainer">
@@ -123,7 +116,9 @@ const SelectTrivia = (props) => {
                 counterSystem={counterSystem}
                 question={questions[`${index}`]}
                 setIndex={setIndex}
-                index={index} /> : null
+                index={index} 
+                numOfQuestion={questions}/> : null
+                
             }
             </div>
         </section>
