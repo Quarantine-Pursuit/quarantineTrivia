@@ -21,9 +21,11 @@ const SelectTrivia = (props) => {
         setQuestions(newObj);      
     }, [props.userQuestion]);
 
+
     const handleSubmit = (e) => {
         e.preventDefault(e);
         props.getTrivia();
+        setCounter(0);
     };
     
     const handleChange = (e) => {
@@ -99,15 +101,25 @@ const SelectTrivia = (props) => {
                 </div>
             }
 
-            <div className="triviaHidden">
-                {
-                    questions.length > 0 ? <DisplayTrivia 
-                    counterSystem={counterSystem}
-                    question={questions[`${index}`]}
-                    setIndex={setIndex}
-                    index={index} /> : null
-                }
-            </div>
+            {
+                triviaResult === false ? (
+                <div className="popUpContainer">
+                    <div className="popUp">
+                        <p>No trivia found. Please try again with different selections.</p>
+                    </div>
+                </div>
+                ) : null
+            }
+            
+            {
+                questions.length > 0 ? <DisplayTrivia 
+                counterSystem={counterSystem}
+                question={questions[`${index}`]}
+                setIndex={setIndex}
+                index={index} 
+                numOfQuestion={questions}/> : null
+            }
+
         </section>
     );
 };

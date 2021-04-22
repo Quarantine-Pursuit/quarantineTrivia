@@ -126,13 +126,6 @@ h1 {
     z-index: -1;
 }
 
-.triviaHidden {
-    height: auto;
-    /* overflow: hidden; */
-    padding-left: 10px;
-    display: flex;
-    padding-bottom: 50px;
-}
 
 .pageChange {
     background: #AFEDFF;
@@ -316,6 +309,7 @@ select {
 
 .questionBox {
     min-width: 100%;
+    padding-left: 10px;
 }
 
 .question {
