@@ -455,6 +455,66 @@ footer {
 /*    Responsive Styling     */
 /* ------------------------- */
 
+@media (max-width: 800px) {
+    .triviaContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .startGame {
+        margin-top: 50px;
+        height: 90px;
+        padding: 10px;
+    }
+    .select {
+        padding: 40px;
+    }
+    
+    .triviaOptions {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 590px) {
+    .triviaContainer {
+        height: 600px;
+        justify-content: space-evenly;
+        padding-top: 0;
+        flex-direction: column;
+    }
+
+    .triviaContainer::before {
+        content: none;
+    }
+
+    .gameNav {
+        min-width: 100%;
+    }
+
+    .questionBox {
+        padding-left: 0;
+    }
+    .gameMenu,
+    .counter {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .questionContainer {
+        margin-top: 0;
+    }
+
+    .submitAnswer {
+        margin: 30px auto 0;
+
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}
+
 @media (max-width: 520px) {
     .popUp {
         height: 250px;
@@ -474,7 +534,45 @@ footer {
     }
 }
 
-@media (max-width: 360px) {
+@media (max-height: 500px) {
+    .popUp {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    h2 {
+        font-size: 1.15rem;
+    }
+
+    .question {
+        font-size: 0.8rem;
+    }
+
+    .gameMenu {
+        flex-direction: column;
+    }
+
+    .saveGame {
+        margin-right: 0;
+    }
+
+    .newGame {
+        margin-top: 20px;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+
+}
+
+@media (max-width: 370px) {
+    .triviaContainer {
+        padding: 0 20px 20px;
+    }
+
     .popUp {
         height: 200px;
         padding: 55px 30px 30px 30px;
@@ -497,8 +595,6 @@ footer {
     }
 }
 
-@media (max-height: 500px) {
-    .popUp {
-        margin-top: 50px;
-    }
-}
+
+
+
