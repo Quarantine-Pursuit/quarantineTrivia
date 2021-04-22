@@ -108,7 +108,7 @@ const SelectTrivia = (props) => {
 
             {
                 props.userQuestion.length === 0 ? null :
-                <div>
+                <div className="gameNav">
                     <div className="gameMenu">
                         <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
                         <NewGameButton setUserQuestion={props.setUserQuestion} setUserInput={props.setUserInput} confirm={confirmClick}/>
