@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 const DisplayTrivia = (props) => {
     const [userChoice, setUserChoice] = useState('');
     const [safeQuestion, setSafeQuestion] = useState('');
     const [safeAnswer, setSafeAnswer] = useState('');
+    const [safeCorrectAnswer, setSafeCorrectAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
     const [gameOver, setGameOver] = useState(false);
-
-        
 
     useEffect( () => { 
         const allAnswersArray = [];
@@ -23,12 +22,16 @@ const DisplayTrivia = (props) => {
                  array[currentIndex] = array[randomIndex];
                  array[randomIndex] = temporaryValue;
             };
-        }
+        };
         shuffledAnswers(allAnswersArray);
 
         const placeholder = document.createElement('div');
         placeholder.innerHTML = props.question.question;
         const safeQuestion = placeholder.textContent;
+
+        const correctPlaceholder = document.createElement('div');
+        correctPlaceholder.innerHTML = props.question.correctAnswer;
+        const safeCorrectAnswer = correctPlaceholder.textContent;
 
         const newShuffleAnswer = allAnswersArray.map((array) => {
             const placeholderTwo = document.createElement('div');
@@ -38,13 +41,15 @@ const DisplayTrivia = (props) => {
         });
         setSafeQuestion(safeQuestion);
         setSafeAnswer(newShuffleAnswer);
-        
+
+        setSafeCorrectAnswer(safeCorrectAnswer);
+
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
 
     const userSubmit = (e) => {
         e.preventDefault();
-        if (userChoice === props.question.correctAnswer) {
+        if (userChoice === safeCorrectAnswer) {
             setAnswerCheck(true);
             popUpEffect();
             props.counterSystem();
@@ -56,24 +61,27 @@ const DisplayTrivia = (props) => {
         } else {
             setAnswerCheck(false);
             popUpEffect();
-        }
+        };
         props.setIndex(props.index + 1);
     }
+
 
     const gameOverEffect = () => {
         setTimeout(() => {
             setGameOver(true)
         }, 3000)
     }
+
     const popUpEffect = () => {
         setTimeout(() => {
             setAnswerCheck();
         }, 2000);
-    }
+    };
 
     const handleChange = (e) => {
         setUserChoice(e.target.value);
-    }
+    };
+
     return (
         <div className="questionBox">
             <div className="questionContainer">
@@ -157,7 +165,7 @@ const DisplayTrivia = (props) => {
                 ) : null
             } */}
         </div>
-    )
-    }
+    );
+};
 
 export default DisplayTrivia;

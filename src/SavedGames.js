@@ -20,8 +20,8 @@ const SavedGames = (props) => {
                     key: key,
                     category: data[key][0].category,
                     numOfQuestions: data[key].length
-                })
-            }
+                });
+            };
             setDisplaySaved(savedTrivia);
         });
     }, []);
@@ -31,12 +31,12 @@ const SavedGames = (props) => {
         dbRef.on('value', (response) => {
             const data = response.val();
             props.setUserQuestion(data);
-        })
-    }
+        });
+    };
 
     const closeClick = () => {
         setConfirmMessage(false);
-    }
+    };
 
     return(
         <div className="triviaContainer">
@@ -75,7 +75,7 @@ const SavedGames = (props) => {
                 ) : null
             }
         </div>
-    )
+    );
 };
 
 export default SavedGames;
