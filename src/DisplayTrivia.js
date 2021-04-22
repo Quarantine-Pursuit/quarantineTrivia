@@ -42,7 +42,9 @@ const DisplayTrivia = (props) => {
         });
         setSafeQuestion(safeQuestion);
         setSafeAnswer(newShuffleAnswer);
+
         setSafeCorrectAnswer(safeCorrectAnswer);
+
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
 
