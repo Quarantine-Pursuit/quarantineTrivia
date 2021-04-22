@@ -459,6 +459,79 @@ footer {
     }
 }
 
+@media (max-width: 590px) {
+    .triviaContainer {
+        height: 600px;
+        justify-content: space-evenly;
+        padding-top: 0;
+        flex-direction: column;
+    }
+
+    .triviaContainer::before {
+        content: none;
+    }
+
+    .gameNav {
+        min-width: 100%;
+    }
+
+    .questionBox {
+        padding-left: 0;
+    }
+    .gameMenu,
+    .counter {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .questionContainer {
+        margin-top: 0;
+    }
+
+    .submitAnswer {
+        margin: 30px auto 0;
+
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    h2 {
+        font-size: 1.15rem;
+    }
+
+    .question {
+        font-size: 0.8rem;
+    }
+
+    .gameMenu {
+        flex-direction: column;
+    }
+
+    .saveGame {
+        margin-right: 0;
+    }
+
+    .newGame {
+        margin-top: 20px;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+
+}
+
+@media (max-width: 370px) {
+    .triviaContainer {
+        padding: 0 20px 20px;
+    }
+}
+
 @media (max-width: 360px) {
     
     .triviaContainer {
@@ -480,3 +553,16 @@ footer {
         margin: 10% auto;
     }
 }
+
+@media (max-width: 300px) {
+    .startGame {
+            margin-top: 50px;
+            padding: 10px;
+        }
+
+    .button {
+            height: 40px;
+        }
+}
+
+
