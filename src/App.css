@@ -32,18 +32,27 @@ footer {
 h1,
 h2,
 h3,
-p {
+p,
+ul{
     margin: 0;
 }
 
 ul {
     list-style: none;
-    margin: 0;
     padding: 0;
 }
 
+a,
+.pageChange a:hover,
+.pageChange a:focus,
+.startGame:hover,
+.startGame:focus,
+.newGame a:hover,
+.newGame a:focus {
+    color: #000
+}
+
 a {
-    color: #000;
     text-decoration: none;
     transition-duration: 0.3s;
 }
@@ -66,11 +75,45 @@ button:focus {
     border-bottom: 5px solid #000;
 }
 
-.wrapper {
+.wrapper,
+.triviaContainer {
     margin: 0 auto;
+}
+
+.wrapper {
     min-height: 70vh;
     width: 85%;
     max-width: 1400px;
+}
+
+.triviaHidden,
+.triviaSetting,
+.triviaOptions,
+.gameMenu,
+.answerChoices,
+.savedGames,
+.teamAwesome {
+    display: flex;
+}
+
+.triviaContainer::before,
+.pageChange,
+.startGame:hover,
+.startGame:focus,
+.submitAnswer:hover,
+.submit:focus,
+.listOfGames:hover,
+.listOfGames:focus {
+    background: #AFEDFF;
+}
+
+.pageChange,
+.pageChange:hover,
+.pageChange:focus,
+.popUp button,
+select,
+fieldset {
+    border: none;
 }
 
 
@@ -108,14 +151,12 @@ h1 {
     border-radius: 15px;
     height: 550px;
     max-width: 1100px;
-    margin: 0 auto;
     padding: 50px;
     position: relative;
 }
 
 .triviaContainer::before {
     content: '';
-    background: #AFEDFF;
     border-radius: 15px;
     height: 550px;
     position: absolute;
@@ -130,31 +171,18 @@ h1 {
     height: auto;
     /* overflow: hidden; */
     padding-left: 10px;
-    display: flex;
     padding-bottom: 50px;
 }
 
 .pageChange {
-    background: #AFEDFF;
-    border: none;
     border-radius: 10px 10px 0 0;
     font-weight: bold;
-}
-
-.pageChange:hover,
-.pageChange:focus {
-    border: none;
 }
 
 .pageChange a {
     color: #FFF;
     padding: 10px 20px;
     transition-duration: 0.3s;
-}
-
-.pageChange a:hover,
-.pageChange a:focus {
-    color: #000;
 }
 
 .triviaContainer .pageChange {
@@ -164,13 +192,11 @@ h1 {
 }
 
 .triviaSetting {
-    display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .triviaOptions {
-    display: flex;
     justify-content: space-around;
     width: 100%;
 }
@@ -183,7 +209,6 @@ select {
     background-position: 95% center;
     background-repeat: no-repeat;
     background-size: 25px;
-    border: none;
     font-family: 'Barlow', sans-serif;
     padding: 10px;
 }
@@ -215,13 +240,10 @@ select {
 
 .startGame:hover,
 .startGame:focus {
-    background: #AFEDFF;
     border: 7px solid #000;
-    color: #000;
 }
 
 .gameMenu {
-    display: flex;
     padding-left: 10px;
 }
 
@@ -252,11 +274,6 @@ select {
     background: #FFB0C6;
 }
 
-.newGame a:hover,
-.newGame a:focus {
-    color: #000;
-}
-
 .counter {
     margin: 30px 0 0 10px;
 }
@@ -281,7 +298,6 @@ select {
 
 .popUp button {
     background: none;
-    border: none;
     color: #FFF;
     font-size: 2rem;
     margin: 50px 50px 0 50px;
@@ -323,7 +339,6 @@ select {
 }
 
 .answerChoices {
-    display: flex;
     flex-direction: column;
 }
 
@@ -342,13 +357,7 @@ select {
     margin: 5% 5% 0 auto;
 }
 
-.submitAnswer:hover,
-.submitAnswer:focus {
-    background: #AFEDFF;
-}
-
 fieldset {
-    border: none;
     height: 150px;
     padding: 0;
 }
@@ -359,7 +368,6 @@ fieldset {
 /* ------------------------- */
 
 .savedGames {
-    display: flex;
     flex-wrap: wrap;
     height: 100%;
     overflow-y: auto;
@@ -391,11 +399,6 @@ fieldset {
     width: 260px;
 }
 
-.listOfGames:hover,
-.listOfGames:focus {
-    background: #AFEDFF;
-}
-
 h3 {
     font-size: 1rem;
 }
@@ -417,7 +420,6 @@ footer {
 }
 
 .teamAwesome {
-    display: flex;
     justify-content: space-evenly;
     margin: 20px 0;
 }

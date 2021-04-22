@@ -5,6 +5,7 @@ const DisplayTrivia = (props) => {
     const [safeQuestion, setSafeQuestion] = useState('');
     const [safeAnswer, setSafeAnswer] = useState('');
     const [answerCheck, setAnswerCheck] = useState();
+    const [gameOver, setGameOver] = useState(false);
 
         
 
@@ -39,7 +40,6 @@ const DisplayTrivia = (props) => {
         setSafeAnswer(newShuffleAnswer);
     
     }, [props.question.correctAnswer, props.question.incorrectAnswer, props.question.question]);
-    console.log(props.question.correctAnswer)
 
     const userSubmit = (e) => {
         e.preventDefault();
@@ -52,6 +52,20 @@ const DisplayTrivia = (props) => {
             popUpEffect();
         }
         props.setIndex(props.index + 1);
+
+        if (props.index >= props.question.question.length) {
+            console.log(props);
+            setGameOver(true);
+            gameOverEffect();
+        } else {
+            setGameOver(false);
+        }
+    }
+
+    const gameOverEffect = () => {
+        setTimeout(() => {
+            
+        })
     }
 
     const popUpEffect = () => {
@@ -132,6 +146,21 @@ const DisplayTrivia = (props) => {
                     </div>
                 ) : null
             }
+
+            {
+                gameOver === true ? (
+                    <div className="popUpContainer">
+                        <div className="popUp">
+                            <h2>You got {counter} out of {props.userQuestion.length} correct!</h2>
+                            <h2>Would you like to play another game?</h2>
+                            <button>Yes</button>
+                            <button>No</button>
+                        </div>
+                    </div>
+                ) : null
+            }
+
+
         </div>
     )
     }
