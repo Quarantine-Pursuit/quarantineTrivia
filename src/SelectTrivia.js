@@ -25,11 +25,10 @@ const SelectTrivia = (props) => {
     }, [props.userQuestion])
 
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault(e);
         props.getTrivia();
+        setCounter(0);
     };
     
     const handleChange = (e) => {
@@ -117,15 +116,14 @@ const SelectTrivia = (props) => {
                 ) : null
             } */}
             
-            <div className="triviaHidden">
             {
                 questions.length > 0 ? <DisplayTrivia 
                 counterSystem={counterSystem}
                 question={questions[`${index}`]}
                 setIndex={setIndex}
-                index={index} /> : null
+                index={index} 
+                numOfQuestion={questions}/> : null
             }
-            </div>
         </section>
     )
 }
