@@ -450,21 +450,6 @@ footer {
     padding: 0 5px;
 }
 
-@media (max-width: 800px) {
-    
-    .startGame {
-        margin-top: 50px;
-        height: 90px;
-        padding: 10px;
-    }
-    .select {
-        padding: 40px;
-    }
-    
-    .triviaOptions {
-        flex-wrap: wrap;
-    }
-}
 
 /* ------------------------- */
 /*    Responsive Styling     */
@@ -486,6 +471,7 @@ footer {
         width: 140px;
     }
 }
+
 
 @media (max-width: 800px) {
     .triviaContainer {
