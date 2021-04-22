@@ -21,7 +21,6 @@ const SelectTrivia = (props) => {
         setQuestions(newObj);      
     }, [props.userQuestion]);
 
-
     const handleSubmit = (e) => {
         e.preventDefault(e);
         props.getTrivia();
@@ -38,7 +37,11 @@ const SelectTrivia = (props) => {
 
     const counterSystem = () => {
         setCounter(counter + 1);
+
     };
+
+    }
+
 
     return(
         <section className="triviaContainer">
@@ -108,6 +111,7 @@ const SelectTrivia = (props) => {
                 setIndex={setIndex}
                 index={index} 
                 numOfQuestion={questions}/> : null
+                
             }
 
         </section>
