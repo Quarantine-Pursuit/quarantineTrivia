@@ -450,10 +450,42 @@ footer {
     padding: 0 5px;
 }
 
+@media (max-width: 800px) {
+    
+    .startGame {
+        margin-top: 50px;
+        height: 90px;
+        padding: 10px;
+    }
+    .select {
+        padding: 40px;
+    }
+    
+    .triviaOptions {
+        flex-wrap: wrap;
+    }
+}
 
 /* ------------------------- */
 /*    Responsive Styling     */
 /* ------------------------- */
+
+
+@media (max-width: 1000px) {
+    .categories,
+    .questionNum,
+    .type,
+    .difficulty {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .questionNum,
+    .difficulty {
+        width: 140px;
+    }
+}
 
 @media (max-width: 800px) {
     .triviaContainer {
@@ -533,6 +565,17 @@ footer {
 
     h2 {
         font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 564px) {
+    .questionNum,
+    .difficulty {
+        width: 230px;
+    }
+
+    .triviaOptions select {
+        margin-top: 10px;
     }
 }
 
