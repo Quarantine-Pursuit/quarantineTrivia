@@ -335,9 +335,16 @@ select {
     margin-top: 40px;
 }
 
+.endGame p,
 .popUp .loadGameMessage,
 .popUp .newGameMessage {
     margin-top: 0;
+}
+
+.endGame button {
+    font-size: 1.6rem;
+    margin: 30px 0 0 0;
+    padding: 0 50px;
 }
 
 .questionBox {
@@ -443,109 +450,55 @@ footer {
     padding: 0 5px;
 }
 
-@media (max-width: 800px) {
-    .triviaContainer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+
+/* ------------------------- */
+/*    Responsive Styling     */
+/* ------------------------- */
+
+@media (max-width: 520px) {
+    .popUp {
+        height: 250px;
+        padding: 55px 30px 30px 30px;
+        width: 300px;
     }
-    .startGame {
-        margin-top: 50px;
-        height: 90px;
-        padding: 10px;
+
+    .popUp button {
+        font-size: 1.5rem;
+        margin: 50px 35px 0 35px;
     }
-    .select {
-        padding: 40px;
-    }
-    
-    .triviaOptions {
-        flex-wrap: wrap;
+
+    .endGame button {
+        font-size: 1.4rem;
+        margin: 45px 0 0 0;
+        padding: 0 20px;
     }
 }
 
-@media (max-width: 590px) {
-    .triviaContainer {
-        height: 600px;
-        justify-content: space-evenly;
-        padding-top: 0;
-        flex-direction: column;
+@media (max-width: 360px) {
+    .popUp {
+        height: 200px;
+        padding: 55px 30px 30px 30px;
+        width: 250px;
     }
 
-    .triviaContainer::before {
-        content: none;
+    .popUp button {
+        font-size: 1.5rem;
+        margin: 20px 27px 0 27px;
     }
 
-    .gameNav {
-        min-width: 100%;
+    .popUp.endGame {
+        padding-top: 40px;
     }
 
-    .questionBox {
-        padding-left: 0;
-    }
-    .gameMenu,
-    .counter {
-        padding-left: 0;
-        margin-left: 0;
-    }
-
-    .questionContainer {
-        margin-top: 0;
-    }
-
-    .submitAnswer {
-        margin: 30px auto 0;
-
-    }
-
-    h2 {
+    .endGame button {
         font-size: 1.2rem;
+        margin: 20px 0 0 0;
+        padding: 0 10px;
     }
 }
 
-@media (max-width: 400px) {
-    h2 {
-        font-size: 1.15rem;
-    }
-
-    .question {
-        font-size: 0.8rem;
-    }
-
-    .gameMenu {
-        flex-direction: column;
-    }
-
-    .saveGame {
-        margin-right: 0;
-    }
-
-    .newGame {
-        margin-top: 20px;
-    }
-
-    label {
-        font-size: 0.8rem;
-    }
-
-
-}
-
-@media (max-width: 370px) {
-    .triviaContainer {
-        padding: 0 20px 20px;
+@media (max-height: 500px) {
+    .popUp {
+        margin-top: 50px;
     }
 }
-
-@media (max-width: 300px) {
-    .startGame {
-            margin-top: 50px;
-            padding: 10px;
-        }
-
-    .button {
-            height: 40px;
-        }
-}
-
-
