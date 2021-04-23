@@ -509,12 +509,27 @@ footer {
     }
 }
 
+@media (max-width: 840px) {
+    .questionContainer {
+        font-size: 0.8rem;
+    }
+
+    .answerChoices {
+        font-size: 0.8rem;
+    }
+}
+
 @media (max-width: 800px) {
     .triviaContainer {
         display: flex;
         flex-wrap: wrap;
+        height: 580px;
         justify-content: center;
         align-items: center;
+    }
+
+    .triviaContainer::before {
+        height: 580px;
     }
 
     .startGame {
@@ -531,8 +546,16 @@ footer {
         flex-wrap: wrap;
     }
 
+    .gameNav {
+        margin-top: -60px;
+    }
+
+    .questionBox {
+        margin-top: -100px;
+    }
+
     .questionContainer {
-        margin: -40px 0 10px 0;
+        margin: 0 0 20px 0;
     }
 
     .submitAnswer {
@@ -673,6 +696,10 @@ footer {
 }
 
 @media (max-width: 443px) {
+    .triviaContainer {
+        height: 680px;
+    }
+
     .teamAwesome {
         padding: 0 30px;
     }
@@ -766,8 +793,28 @@ footer {
     }
 }
 
+@media (max-width: 350px) {
+    .triviaContainer {
+        height: 700px;
+    }
+}
+
+@media (max-height: 900px) {
+    .wrapper {
+        min-height: 60vh;
+    }
+
+    footer {
+        margin-top: 150px;
+    }    
+}
+
 @media (max-height: 500px) {
     .popUp {
         margin-top: 50px;
     }
+
+    footer {
+        margin-top: 150px;
+    }    
 }
