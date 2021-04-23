@@ -690,6 +690,10 @@ footer {
         width: 145px;
     }
 
+    .listOfGames p {
+        margin-top: 10px;
+    }
+
     h3 {
         font-size: 0.8rem;
     }
