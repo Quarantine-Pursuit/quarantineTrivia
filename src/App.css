@@ -623,7 +623,8 @@ footer {
         font-size: 1.15rem;
     }
 
-    .question {
+    .question,
+    label {
         font-size: 0.8rem;
     }
 
@@ -637,10 +638,6 @@ footer {
 
     .newGame {
         margin-top: 20px;
-    }
-
-    label {
-        font-size: 0.8rem;
     }
 
     h1 {
