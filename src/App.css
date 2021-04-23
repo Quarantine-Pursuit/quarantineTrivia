@@ -438,7 +438,7 @@ footer {
     border-top: 5px solid #9BD694;
     font-size: 0.9rem;
     margin-top: 80px;
-    padding: 10px 0 15px 0;
+    padding: 20px;
 }
 
 .teamAwesome {
@@ -454,7 +454,6 @@ footer {
 /* ------------------------- */
 /*    Responsive Styling     */
 /* ------------------------- */
-
 
 @media (max-width: 1000px) {
     .categories,
@@ -472,6 +471,18 @@ footer {
     }
 }
 
+@media (max-width: 880px) {
+    .teamAwesome {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 100px;
+    }
+
+    .teamAwesome li {
+        margin: 0 30px;
+        padding: 5px 0;
+    }
+}
 
 @media (max-width: 800px) {
     .triviaContainer {
@@ -496,6 +507,12 @@ footer {
     }
 }
 
+@media (max-width: 735px) {
+    .teamAwesome {
+        padding: 0 20px;
+    }
+}
+
 @media (max-width: 590px) {
     .triviaContainer {
         height: 600px;
@@ -504,16 +521,13 @@ footer {
         flex-direction: column;
     }
 
-    footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    .teamAwesome {
+        padding: 0 85px;
     }
 
-    .teamAwesome {
-        list-style-type: none;
-        flex-wrap: wrap;
+    .teamAwesome li {
+        margin: 0;
+        padding: 0 0 5px 0;
     }
 
     li, 
@@ -568,6 +582,7 @@ footer {
 @media (max-width: 520px) {
     .popUp {
         height: 250px;
+        margin-top: 350px;
         padding: 55px 30px 30px 30px;
         width: 300px;
     }
@@ -592,7 +607,11 @@ footer {
     }
 }
 
-
+@media (max-width: 443px) {
+    .teamAwesome {
+        padding: 0 30px;
+    }
+}
 
 @media (max-width: 400px) {
     h2 {
@@ -622,7 +641,6 @@ footer {
     h1 {
         font-size: 2.5rem;
     }
-
 }
 
 @media (max-width: 370px) {
@@ -650,8 +668,14 @@ footer {
         margin: 20px 0 0 0;
         padding: 0 10px;
     }
+
+    .teamAwesome {
+        padding: 0;
+    }
 }
 
-
-
-
+@media (max-height: 500px) {
+    .popUp {
+        margin-top: 50px;
+    }
+}
