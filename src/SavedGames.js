@@ -43,7 +43,7 @@ const SavedGames = (props) => {
     };
 
     return(
-        <div className="triviaContainer">
+        <div className="triviaContainer savedContainer">
             <button className="pageChange">
               <Link to="/">Current Game</Link>
             </button>

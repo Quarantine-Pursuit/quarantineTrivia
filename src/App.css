@@ -167,7 +167,6 @@ h1 {
 
 .triviaHidden {
     height: auto;
-    /* overflow: hidden; */
     padding-left: 10px;
     padding-bottom: 50px;
 }
@@ -357,7 +356,7 @@ select {
 }
 
 .questionContainer {
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .answerChoices {
@@ -376,7 +375,7 @@ select {
     border: 1px solid #AFEDFF;
     border-bottom: 5px solid #AFEDFF;
     display: block;
-    margin: 5% 5% 0 auto;
+    margin: 2% 5% 0 auto;
 }
 
 fieldset {
@@ -415,7 +414,7 @@ fieldset {
     border: 3px solid #AFEDFF;
     border-radius: 10px;
     height: 100px;
-    margin: 10px 15px 10px 0;
+    margin: 10px 50px 10px 0;
     padding: 10px;
     transition-duration: 0.3s;
     width: 260px;
@@ -455,6 +454,27 @@ footer {
 /*    Responsive Styling     */
 /* ------------------------- */
 
+@media (max-width: 1250px) {
+    .listOfGames {
+        margin: 10px 30px 10px 0;
+        width: 255px;
+    }
+}
+
+@media (max-width: 1161px) {
+    .listOfGames {
+        margin: 10px 15px 10px 0;
+        width: 248px;
+    }
+}
+
+@media (max-width: 1084px) {
+    .listOfGames {
+        margin: 10px 48px 10px 0;
+        width: 260px;
+    }
+}
+
 @media (max-width: 1000px) {
     .categories,
     .questionNum,
@@ -482,6 +502,11 @@ footer {
         margin: 0 30px;
         padding: 5px 0;
     }
+
+    .listOfGames {
+        margin: 10px 15px 10px 0;
+        width: 248px;
+    }
 }
 
 @media (max-width: 800px) {
@@ -504,6 +529,28 @@ footer {
     
     .triviaOptions {
         flex-wrap: wrap;
+    }
+
+    .questionContainer {
+        margin: -40px 0 10px 0;
+    }
+
+    .submitAnswer {
+        margin: 0 5% 0 auto;
+    }
+
+    .listOfGames {
+        font-size: 0.8rem;
+        height: 120px;
+        width: 145px;
+    }
+
+    .listOfGames p {
+        margin: 0;
+    }
+
+    h3 {
+        font-size: 0.8rem;
     }
 }
 
@@ -554,13 +601,8 @@ footer {
         margin-left: 0;
     }
 
-    .questionContainer {
-        margin-top: 0;
-    }
-
     .submitAnswer {
         margin: 30px auto 0;
-
     }
 
     h2 {
@@ -575,8 +617,23 @@ footer {
     .triviaOptions select {
         margin-top: 10px;
     }
+
+    .triviaContainer.savedContainer {
+        padding-top: 50px;
+    }
 }
 
+@media (max-width: 532px) {
+    .listOfGames {
+        font-size: 0.9rem;
+        height: 100px;
+        width: 230px;
+    }
+
+    h3 {
+        font-size: 0.9rem;
+    }
+}
 
 @media (max-width: 520px) {
     .popUp {
@@ -586,7 +643,6 @@ footer {
         width: 300px;
         margin-top: 200px;
     }
-
 
     .popUp button {
         font-size: 1.5rem;
@@ -604,6 +660,18 @@ footer {
     }
 }
 
+@media (max-width: 460px) {
+    .listOfGames {
+        font-size: 0.8rem;
+        height: 120px;
+        width: 145px;
+    }
+
+    h3 {
+        font-size: 0.8rem;
+    }
+}
+
 @media (max-width: 443px) {
     .teamAwesome {
         padding: 0 30px;
@@ -617,7 +685,6 @@ footer {
     .difficulty {
         width: 180px;
     }
-
 
     h2 {
         font-size: 1.15rem;
@@ -640,14 +707,33 @@ footer {
         margin-top: 20px;
     }
 
+    .submitAnswer {
+        margin: 20px auto 0;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
     h1 {
         font-size: 2.5rem;
+    }
+
+    .categories,
+    .questionNum,
+    .type,
+    .difficulty {
+        width: 180px;
     }
 }
 
 @media (max-width: 370px) {
     .triviaContainer {
         padding: 0 20px 20px;
+    }
+
+    .triviaContainer.savedContainer {
+        padding: 50px 30px;
     }
 
     .popUp {
@@ -679,7 +765,6 @@ footer {
         padding: 0;
     }
 }
-
 
 @media (max-height: 500px) {
     .popUp {
