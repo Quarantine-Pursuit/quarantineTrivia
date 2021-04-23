@@ -77,7 +77,7 @@ const SelectTrivia = (props) => {
                             </select>
 
                             <select name="questionNum" id="questionNum" value={props.userInput.questionNum} onChange={handleChange} className="questionNum">
-                                <option value="placeholder" disabled>Question Qty.</option>
+                                <option value="placeholder" disabled>Quantity</option>
                                 <option name="5" value="5">5</option>
                                 <option name="8" value="8">8</option>
                                 <option name="11" value="11">11</option>
@@ -87,7 +87,7 @@ const SelectTrivia = (props) => {
                             </select>
 
                             <select name="type" id="type" value={props.userInput.type} onChange={handleChange} className="type">
-                                <option value="placeholder" disabled>Question Type</option>
+                                <option value="placeholder" disabled>Type</option>
                                 <option name="multiple" value="multiple">Multiple Choice</option>
                                 <option name="boolean" value="boolean">True/False</option>
                                 <option name="mix" value="">Mix</option>
@@ -108,7 +108,7 @@ const SelectTrivia = (props) => {
 
             {
                 props.userQuestion.length === 0 ? null :
-                <div>
+                <div className="gameNav">
                     <div className="gameMenu">
                         <SaveButton currentTrivia={props.userQuestion} setQuestion={props.setUserQuestion}/>
                         <NewGameButton setUserQuestion={props.setUserQuestion} setUserInput={props.setUserInput} confirm={confirmClick}/>

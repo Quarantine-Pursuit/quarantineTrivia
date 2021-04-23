@@ -167,7 +167,6 @@ h1 {
 
 .triviaHidden {
     height: auto;
-    /* overflow: hidden; */
     padding-left: 10px;
     padding-bottom: 50px;
 }
@@ -335,9 +334,16 @@ select {
     margin-top: 40px;
 }
 
+.endGame p,
 .popUp .loadGameMessage,
 .popUp .newGameMessage {
     margin-top: 0;
+}
+
+.endGame button {
+    font-size: 1.6rem;
+    margin: 30px 0 0 0;
+    padding: 0 50px;
 }
 
 .questionBox {
@@ -350,7 +356,7 @@ select {
 }
 
 .questionContainer {
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .answerChoices {
@@ -369,7 +375,7 @@ select {
     border: 1px solid #AFEDFF;
     border-bottom: 5px solid #AFEDFF;
     display: block;
-    margin: 5% 5% 0 auto;
+    margin: 2% 5% 0 auto;
 }
 
 fieldset {
@@ -408,7 +414,7 @@ fieldset {
     border: 3px solid #AFEDFF;
     border-radius: 10px;
     height: 100px;
-    margin: 10px 15px 10px 0;
+    margin: 10px 50px 10px 0;
     padding: 10px;
     transition-duration: 0.3s;
     width: 260px;
@@ -431,7 +437,7 @@ footer {
     border-top: 5px solid #9BD694;
     font-size: 0.9rem;
     margin-top: 80px;
-    padding: 10px 0 15px 0;
+    padding: 20px;
 }
 
 .teamAwesome {
@@ -443,18 +449,95 @@ footer {
     padding: 0 5px;
 }
 
+
+/* ------------------------- */
+/*    Responsive Styling     */
+/* ------------------------- */
+
+@media (max-width: 1250px) {
+    .listOfGames {
+        margin: 10px 30px 10px 0;
+        width: 255px;
+    }
+}
+
+@media (max-width: 1161px) {
+    .listOfGames {
+        margin: 10px 15px 10px 0;
+        width: 248px;
+    }
+}
+
+@media (max-width: 1084px) {
+    .listOfGames {
+        margin: 10px 48px 10px 0;
+        width: 260px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .categories,
+    .questionNum,
+    .type,
+    .difficulty {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .questionNum,
+    .difficulty {
+        width: 140px;
+    }
+}
+
+@media (max-width: 880px) {
+    .teamAwesome {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 100px;
+    }
+
+    .teamAwesome li {
+        margin: 0 30px;
+        padding: 5px 0;
+    }
+
+    .listOfGames {
+        margin: 10px 15px 10px 0;
+        width: 248px;
+    }
+}
+
+@media (max-width: 840px) {
+    .questionContainer {
+        font-size: 0.8rem;
+    }
+
+    .answerChoices {
+        font-size: 0.8rem;
+    }
+}
+
 @media (max-width: 800px) {
     .triviaContainer {
         display: flex;
         flex-wrap: wrap;
+        height: 580px;
         justify-content: center;
         align-items: center;
     }
+
+    .triviaContainer::before {
+        height: 580px;
+    }
+
     .startGame {
         margin-top: 50px;
         height: 90px;
         padding: 10px;
     }
+
     .select {
         padding: 40px;
     }
@@ -462,30 +545,276 @@ footer {
     .triviaOptions {
         flex-wrap: wrap;
     }
+
+    .gameNav {
+        margin-top: -60px;
+    }
+
+    .questionBox {
+        margin-top: -100px;
+    }
+
+    .questionContainer {
+        margin: 0 0 20px 0;
+    }
+
+    .submitAnswer {
+        margin: 0 5% 0 auto;
+    }
+
+    .listOfGames {
+        font-size: 0.8rem;
+        height: 120px;
+        width: 145px;
+    }
+
+    .listOfGames p {
+        margin: 0;
+    }
+
+    h3 {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 735px) {
+    .teamAwesome {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 590px) {
+    .triviaContainer {
+        height: 600px;
+        justify-content: space-evenly;
+        padding-top: 0;
+        flex-direction: column;
+    }
+
+    .teamAwesome {
+        padding: 0 85px;
+    }
+
+    .teamAwesome li {
+        margin: 0;
+        padding: 0 0 5px 0;
+    }
+
+    li, 
+    p {
+        list-style-type: none;
+        margin: 5px;
+    }
+
+    .triviaContainer::before {
+        content: none;
+    }
+
+    .gameNav {
+        min-width: 100%;
+    }
+
+    .questionBox {
+        padding-left: 0;
+    }
+
+    .gameMenu,
+    .counter {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .submitAnswer {
+        margin: 30px auto 0;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .questionNum,
+    .difficulty {
+        width: 230px;
+    }
+
+    .triviaOptions select {
+        margin-top: 10px;
+    }
+
+    .triviaContainer.savedContainer {
+        padding-top: 50px;
+    }
+}
+
+@media (max-width: 532px) {
+    .listOfGames {
+        font-size: 0.9rem;
+        height: 100px;
+        width: 230px;
+    }
+
+    h3 {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .popUp {
+        height: 250px;
+        margin-top: 350px;
+        padding: 55px 30px 30px 30px;
+        width: 300px;
+        margin-top: 200px;
+    }
+
+    .popUp button {
+        font-size: 1.5rem;
+        margin: 50px 35px 0 35px;
+    }
+
+    .endGame button {
+        font-size: 1.4rem;
+        margin: 45px 0 0 0;
+        padding: 0 20px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 460px) {
+    .listOfGames {
+        font-size: 0.8rem;
+        height: 120px;
+        width: 145px;
+    }
+
+    h3 {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 443px) {
+    .triviaContainer {
+        height: 680px;
+    }
+
+    .teamAwesome {
+        padding: 0 30px;
+    }
 }
 
 @media (max-width: 400px) {
+    .categories,
+    .questionNum,
+    .type,
+    .difficulty {
+        width: 180px;
+    }
 
- .triviaOptions {
-        display: flex;
+    h2 {
+        font-size: 1.15rem;
+    }
+
+    .question,
+    label {
+        font-size: 0.8rem;
+    }
+
+    .gameMenu {
         flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: center;
+    }
+
+    .saveGame {
+        margin-right: 0;
+    }
+
+    .newGame {
+        margin-top: 20px;
+    }
+
+    .submitAnswer {
+        margin: 20px auto 0;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .categories,
+    .questionNum,
+    .type,
+    .difficulty {
+        width: 180px;
     }
 }
-    @media (max-width: 300px) {
-    
-     .triviaOptions {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            justify-content: center;   
-        }
-        .startGame {
-            margin-top: 50px;
-            padding: 10px;
-        }
-        .button {
-            height: 40px;
-        }
+
+@media (max-width: 370px) {
+    .triviaContainer {
+        padding: 0 20px 20px;
     }
+
+    .triviaContainer.savedContainer {
+        padding: 50px 30px;
+    }
+
+    .popUp {
+        height: 200px;
+        padding: 55px 30px 30px 30px;
+        width: 250px;
+    }
+
+    .popUp p {
+        margin-top: 10px;
+    }
+
+    .popUp button {
+        font-size: 1.5rem;
+        margin: 20px 27px 0 27px;
+    }
+
+    .popUp.endGame {
+        padding-top: 40px;
+    }
+
+    .endGame button {
+        font-size: 1.2rem;
+        margin: 20px 0 0 0;
+        padding: 0 10px;
+    }
+
+    .teamAwesome {
+        padding: 0;
+    }
+}
+
+@media (max-width: 350px) {
+    .triviaContainer {
+        height: 700px;
+    }
+}
+
+@media (max-height: 900px) {
+    .wrapper {
+        min-height: 60vh;
+    }
+
+    footer {
+        margin-top: 150px;
+    }    
+}
+
+@media (max-height: 500px) {
+    .popUp {
+        margin-top: 50px;
+    }
+
+    footer {
+        margin-top: 150px;
+    }    
+}

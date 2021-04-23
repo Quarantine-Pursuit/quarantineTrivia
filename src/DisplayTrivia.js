@@ -152,16 +152,16 @@ const DisplayTrivia = (props) => {
                                     onClick={() => setCheck(safeAnswer[2])}/>
                                     <label htmlFor="answerThree">{safeAnswer[2]}</label>
                                 </div>
-                            </div>
-                            <div className="answer">
-                                <input type="radio" 
-                                name="multipleChoice" 
-                                id="answerFour" 
-                                value={safeAnswer[3]} 
-                                onChange={handleChange} 
-                                checked={check===safeAnswer[3]} 
-                                onClick={() => setCheck(safeAnswer[3])}/>
-                                <label htmlFor="answerFour">{safeAnswer[3]}</label>
+                                <div className="answer">
+                                    <input type="radio" 
+                                    name="multipleChoice" 
+                                    id="answerFour" 
+                                    value={safeAnswer[3]} 
+                                    onChange={handleChange} 
+                                    checked={check===safeAnswer[3]} 
+                                    onClick={() => setCheck(safeAnswer[3])}/>
+                                    <label htmlFor="answerFour">{safeAnswer[3]}</label>
+                                </div>
                             </div>
                             <button type="submit" className="submitAnswer">Submit Answer</button>
                         </fieldset>
@@ -186,9 +186,9 @@ const DisplayTrivia = (props) => {
             {
                 gameOver === true ? (
                     <div className="popUpContainer">
-                        <div className="popUp">
-                            <p className="endGame">You got {props.counter} out of {props.numOfQuestion.length} correct!</p>
-                            <button className="affirm endGame" onClick={() => props.confirm()}>
+                        <div className="popUp endGame">
+                            <p>You got {props.counter} out of {props.numOfQuestion.length} correct!</p>
+                            <button className="affirm" onClick={() => props.confirm()}>
                                 <Link to="/">Go back to starting screen.</Link>
                             </button>
                         </div>

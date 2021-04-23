@@ -16,7 +16,7 @@ const NewGameButton = (props) => {
     };
 
     return(
-        <div>
+        <>
             <button onClick={newGame} className="newGame">New Game</button>
             {
                 newGameMessage ? (
@@ -31,7 +31,7 @@ const NewGameButton = (props) => {
                     </div>
                 ) : null
             }
-        </div>
+        </>
     );
 };
 
