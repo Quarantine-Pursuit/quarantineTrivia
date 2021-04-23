@@ -570,7 +570,9 @@ footer {
         height: 250px;
         padding: 55px 30px 30px 30px;
         width: 300px;
+        margin-top: 200px;
     }
+
 
     .popUp button {
         font-size: 1.5rem;
@@ -581,10 +583,6 @@ footer {
         font-size: 1.4rem;
         margin: 45px 0 0 0;
         padding: 0 20px;
-    }
-
-    .popUp {
-        margin-top: 50px;
     }
 
     h1 {
@@ -636,6 +634,10 @@ footer {
         width: 250px;
     }
 
+    .popUp p {
+        margin-top: 10px;
+    }
+
     .popUp button {
         font-size: 1.5rem;
         margin: 20px 27px 0 27px;
@@ -651,7 +653,5 @@ footer {
         padding: 0 10px;
     }
 }
-
-
-
+/* media */
 
