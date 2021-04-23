@@ -566,9 +566,7 @@ footer {
     h2 {
         font-size: 1.2rem;
     }
-}
 
-@media (max-width: 564px) {
     .questionNum,
     .difficulty {
         width: 230px;
@@ -578,6 +576,7 @@ footer {
         margin-top: 10px;
     }
 }
+
 
 @media (max-width: 520px) {
     .popUp {
@@ -612,6 +611,14 @@ footer {
 }
 
 @media (max-width: 400px) {
+    .categories,
+    .questionNum,
+    .type,
+    .difficulty {
+        width: 180px;
+    }
+
+
     h2 {
         font-size: 1.15rem;
     }
